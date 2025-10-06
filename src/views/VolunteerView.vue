@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'AboutView',
+  name: 'VolunteerView',
 })
 </script>
 
@@ -10,9 +10,11 @@ export default defineComponent({
   <v-container class="py-10">
     <v-row>
       <v-col cols="12" md="8">
-        <h1 class="text-h4 mb-4">About</h1>
-        <p>Learn about our mission and work.</p>
+        <h1 class="text-h4 mb-4">Volunteer</h1>
+        <p>Help us by volunteering your time and skills.</p>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+
