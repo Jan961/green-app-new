@@ -1,43 +1,5 @@
-<template>
-    <v-container class="testimonials-section py-12">
-        <v-slide-group
-            v-model="active"
-            show-arrows
-            class="testimonials-group"
-        >
-            <template #prev="{ prev }">
-                <v-btn icon variant="text" :height="80" :width="80" @click="prev">
-                    <v-icon icon="mdi-chevron-left" size="80" />
-                </v-btn>
-            </template>
-            <template #next="{ next }">
-                <v-btn icon variant="text" :height="80" :width="80" @click="next">
-                    <v-icon icon="mdi-chevron-right" size="80" />
-                </v-btn>
-            </template>
-            <v-slide-group-item
-                v-for="t in testimonials"
-                :key="t.id"
-                :value="t.id"
-                class="testimonial-item"
-            >   
-            <v-card class="testimonial-card" rounded="xl" elevation="0">   
-                <div class="testimonial-content">
-                    {{ t.title }}
-                    {{ t.body }}
-                    {{ t.author }}
-                    {{ t.rating }}
-                    {{ t.avatar }}
-                </div>
-            </v-card>
-
-            </v-slide-group-item>
-        </v-slide-group>
-    </v-container>
-    
-</template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 type Testimonial = {
     id: number
@@ -79,19 +41,97 @@ const testimonials = ref<Testimonial[]>([
 ])
 
 const active = ref<number>(1)
-</script>
 
-<style scoped>
+const total = computed(() => testimonials.value.length)
 
-.testimonial-card {
-    
-
+function next() {
+    active.value = active.value >= total.value ? 1 : active.value + 1
 }
 
+function prev() {
+    active.value = active.value <= 1 ? total.value : active.value - 1
+}
+</script>
 
+<template>
+    <v-container class="py-12" fluid>
+        <v-row align="center" no-gutters>
+            <v-col cols="1" class="d-none d-md-flex justify-center">
+                <v-btn icon variant="text" color="success" @click="prev">
+                    <v-icon size="48">mdi-chevron-left</v-icon>
+                </v-btn>
+            </v-col>
 
+            <v-col cols="12" md="10">
+                <v-window v-model="active" :touch="{ left: next, right: prev }" continuous>
+                    <v-window-item
+                        v-for="t in testimonials"
+                        :key="t.id"
+                        :value="t.id"
+                    >
+                        <v-row align="center" justify="center">
+                            <v-col cols="12" md="8">
+                                <div class="d-flex align-center mb-4">
+                                    <v-icon color="success" size="48" class="mr-3">
+                                        mdi-format-quote-open
+                                    </v-icon>
+                                    <div class="text-h5 text-md-h3 font-weight-bold">
+                                        {{ t.title }}
+                                    </div>
+                                </div>
+                                <div class="text-body-1 text-medium-emphasis pr-md-8">
+                                    {{ t.body }}
+                                </div>
+                            </v-col>
 
+                            <v-col cols="12" md="3" class="d-flex flex-column align-center">
+                                <v-avatar size="96" class="mb-3">
+                                    <v-img :src="t.avatar" alt="avatar" cover></v-img>
+                                </v-avatar>
+                                <div class="text-subtitle-1 font-weight-medium mb-1">
+                                    {{ t.author }}
+                                </div>
+                                <v-rating
+                                    :model-value="t.rating"
+                                    color="success"
+                                    active-color="success"
+                                    size="20"
+                                    half-increments
+                                    readonly
+                                />
+                                <div class="text-caption text-medium-emphasis mt-1">
+                                    {{ Number(t.rating).toFixed(1) }} Google
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-window-item>
+                </v-window>
 
+                <div class="d-flex justify-center mt-6">
+                    <v-btn
+                        v-for="t in testimonials"
+                        :key="t.id"
+                        size="small"
+                        variant="text"
+                        icon
+                        @click="active = t.id"
+                    >
+                        <v-icon :color="active === t.id ? 'success' : 'grey'">mdi-circle</v-icon>
+                    </v-btn>
+                </div>
+            </v-col>
 
+            <v-col cols="1" class="d-none d-md-flex justify-center">
+                <v-btn icon variant="text" color="success" @click="next">
+                    <v-icon size="48">mdi-chevron-right</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+    </v-container>
+</template>
 
+<style scoped>
+.mr-3 {
+    margin-right: 12px;
+}
 </style>
