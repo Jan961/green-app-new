@@ -1,0 +1,2 @@
+- change colours add borders etc
+- adjust position of gradient

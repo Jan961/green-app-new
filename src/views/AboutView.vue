@@ -60,7 +60,7 @@ export default {
       </v-col>
 
       <v-col cols="12" md="5">
-        <v-sheet class="video-frame elevation-3" rounded="xl">
+        <v-sheet class="video-frame elevation-1" rounded="xl">
           <v-responsive :aspect-ratio="16/9">
             <video
               :src="mainVideo"
