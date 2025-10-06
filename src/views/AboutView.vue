@@ -1,8 +1,10 @@
 <script lang="ts">
 import mainVideo from '@/assets/videos/main_video.mp4'
+import Organisations from '@/components/about/Organisations.vue'
 
 export default {
   name: 'AboutView',
+  components: { Organisations },
   data() {
     return {
       mainVideo,
@@ -75,6 +77,7 @@ export default {
       </v-col>
     </v-row>
   </v-container>
+  <Organisations />
 </template>
 
 <style scoped>
