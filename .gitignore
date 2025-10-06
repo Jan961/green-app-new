@@ -1,0 +1,101 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.cursor/*
+
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+storybook-static/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.vite/
+.eslintcache
+*.tsbuildinfo
+.turbo/
+.parcel-cache/
+
+# Cypress / Playwright artifacts
+cypress/screenshots/
+cypress/videos/
+playwright-report/
+blob-report/
+test-results/
+
+# Environment variables (keep .env and .env.example tracked)
+.env.local
+.env.*.local
+
+# Local tooling
+.npm/
+.pnp*
+.pnpm-debug.log*
+
+# Editors & IDEs
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Misc
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
