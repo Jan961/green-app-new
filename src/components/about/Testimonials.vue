@@ -63,7 +63,8 @@ function prev() {
             </v-col>
 
             <v-col cols="12" md="10">
-                <v-window v-model="active" :touch="{ left: next, right: prev }" continuous>
+                <div class="t-window-fixed-height">
+                    <v-window v-model="active" :touch="{ left: next, right: prev }" continuous>
                     <v-window-item
                         v-for="t in testimonials"
                         :key="t.id"
@@ -105,7 +106,8 @@ function prev() {
                             </v-col>
                         </v-row>
                     </v-window-item>
-                </v-window>
+                    </v-window>
+                </div>
 
                 <div class="d-flex justify-center mt-6">
                     <v-btn
@@ -133,5 +135,9 @@ function prev() {
 <style scoped>
 .mr-3 {
     margin-right: 12px;
+}
+.t-window-fixed-height {
+    /* Adjust this fixed height to accommodate the tallest slide content */
+    min-height: 280px;
 }
 </style>
