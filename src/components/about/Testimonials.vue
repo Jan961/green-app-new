@@ -138,6 +138,6 @@ function prev() {
 }
 .t-window-fixed-height {
     /* Adjust this fixed height to accommodate the tallest slide content */
-    min-height: 280px;
+    min-height: 240px;
 }
 </style>
