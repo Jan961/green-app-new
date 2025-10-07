@@ -8,10 +8,11 @@ import Accomplishments from '@/components/about/Accomplishments.vue'
 import Veganism from '@/components/about/Veganism.vue'
 import OurStory from '@/components/about/OurStory.vue'
 import Education from '@/components/about/Education.vue'
+import OurTeam from '@/components/about/OurTeam.vue'
 
 export default {
   name: 'AboutView',
-  components: { Organisations, Intro, Landing, OurFocus, Testimonials, Accomplishments, Veganism, OurStory, Education },
+  components: { Organisations, Intro, Landing, OurFocus, Testimonials, Accomplishments, Veganism, OurStory, Education, OurTeam },
 
 }
 </script>
@@ -25,6 +26,7 @@ export default {
     <Veganism />
     <Education />
     <OurStory />
+    <OurTeam />
 </template>
 
 <style scoped>
