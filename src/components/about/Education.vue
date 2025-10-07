@@ -20,10 +20,6 @@
               and disadvantaged groups in our community. Together, we help them develop skills, earn
               a sustainable income, and pursue careers in related fields.
             </p>
-
-            <v-btn :to="{ name: 'donate' }" color="green-darken-2" rounded="xl" size="large">
-              Donate
-            </v-btn>
           </div>
         </v-col>
 

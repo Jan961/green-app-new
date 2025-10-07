@@ -23,8 +23,8 @@ export default {
     <Testimonials />
     <Accomplishments />
     <Veganism />
-    <OurStory />
     <Education />
+    <OurStory />
 </template>
 
 <style scoped>
