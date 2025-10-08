@@ -10,25 +10,26 @@ import OurStory from '@/components/about/OurStory.vue'
 import Education from '@/components/about/Education.vue'
 import OurTeam from '@/components/about/OurTeam.vue'
 import Contact from '@/components/about/Contact.vue'
+import RevealOnScroll from '@/components/RevealOnScroll.vue'
 
 export default {
   name: 'AboutView',
-  components: { Organisations, Intro, Landing, OurFocus, Testimonials, Accomplishments, Veganism, OurStory, Education, OurTeam, Contact },
+  components: { Organisations, Intro, Landing, OurFocus, Testimonials, Accomplishments, Veganism, OurStory, Education, OurTeam, Contact, RevealOnScroll },
 
 }
 </script>
   <template>
     <Landing />
-    <Organisations />
-    <Intro />
-    <OurFocus />
-    <Testimonials />
-    <Accomplishments />
-    <Veganism />
-    <Education />
-    <OurStory />
-    <OurTeam />
-    <Contact />
+    <RevealOnScroll><Organisations /></RevealOnScroll>
+    <RevealOnScroll><Intro /></RevealOnScroll>
+    <RevealOnScroll><OurFocus /></RevealOnScroll>
+    <RevealOnScroll><Testimonials /></RevealOnScroll>
+    <RevealOnScroll><Accomplishments /></RevealOnScroll>
+    <RevealOnScroll><Veganism /></RevealOnScroll>
+    <RevealOnScroll><Education /></RevealOnScroll>
+    <RevealOnScroll><OurStory /></RevealOnScroll>
+    <RevealOnScroll><OurTeam /></RevealOnScroll>
+    <RevealOnScroll><Contact /></RevealOnScroll>
 </template>
 
 <style scoped>
