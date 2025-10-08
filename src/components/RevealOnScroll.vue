@@ -27,8 +27,8 @@ export default {
 <style scoped>
 .reveal {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transform: translateY(50px);
+  transition: opacity 3000ms ease, transform 600ms ease;
   will-change: opacity, transform;
 }
 .reveal--visible {
