@@ -28,7 +28,7 @@ export default {
 .reveal {
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 3000ms ease, transform 600ms ease;
+  transition: opacity 3000ms ease, transform 2000ms ease;
   will-change: opacity, transform;
 }
 .reveal--visible {

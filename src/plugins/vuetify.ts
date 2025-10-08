@@ -2,6 +2,8 @@ import 'vuetify/styles'
 import { createVuetify, type ThemeDefinition } from 'vuetify'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import SiteLogo from '@/components/icons/SiteLogo.vue'
+
 
 const lightTheme: ThemeDefinition = {
   dark: false,
@@ -44,7 +46,7 @@ const vuetify = createVuetify({
   },
   icons: {
     defaultSet: 'mdi',
-    aliases,
+    aliases: { ...aliases, siteLogo: SiteLogo },
     sets: { mdi },
   },
 })
