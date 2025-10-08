@@ -1,8 +1,9 @@
 <template>
     <v-app-bar 
-    :class="appBarClasses"
+    :class="['auto-height-app-bar', appBarClasses]"
+    :height="'auto'"
     >
-      <v-toolbar-title>
+      <v-toolbar-title class="pa-2">
         <RouterLink to="/" class="site-logo-link" aria-label="Home">
           <SiteLogo class="site-logo" />
         </RouterLink>
@@ -36,6 +37,15 @@ const appBarClasses = computed(() => ({
 }))
 </script>
 <style scoped>
+.auto-height-app-bar {
+  height: auto;
+}
+
+.auto-height-app-bar :deep(.v-toolbar__content) {
+  min-height: auto;
+  height: auto;
+}
+
 .app-bar--top {
   transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
   background-color: red;
@@ -50,8 +60,6 @@ const appBarClasses = computed(() => ({
 
 .site-logo-link {
   display: inline-block;
-  line-height: 0;
-  text-decoration: none;
 }
 
 .site-logo {
