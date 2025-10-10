@@ -19,6 +19,9 @@ const lightTheme: ThemeDefinition = {
     success: '#4CAF50',
     warning: '#FB8C00',
   },
+  variables: {
+    'navbar-height': '64px',
+  }
 }
 
 const darkTheme: ThemeDefinition = {
@@ -33,6 +36,9 @@ const darkTheme: ThemeDefinition = {
     success: '#4CAF50',
     warning: '#FB8C00',
   },
+  variables: {
+    'navbar-height': '64px',
+  }
 }
 
 const vuetify = createVuetify({

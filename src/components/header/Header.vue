@@ -1,9 +1,9 @@
 <template>
     <v-app-bar 
-    :class="['auto-height-app-bar', appBarClasses]"
-    :height="'auto'"
+    :class="[ appBarClasses]"
+    height='var(--v-navbar-height)'
     >
-      <v-toolbar-title class="pa-2">
+      <v-toolbar-title class="site-logo-title">
         <RouterLink to="/" class="site-logo-link" aria-label="Home">
           <SiteLogo class="site-logo" />
         </RouterLink>
@@ -37,14 +37,6 @@ const appBarClasses = computed(() => ({
 }))
 </script>
 <style scoped>
-.auto-height-app-bar {
-  height: auto;
-}
-
-.auto-height-app-bar :deep(.v-toolbar__content) {
-  min-height: auto;
-  height: auto;
-}
 
 .app-bar--top {
   transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
@@ -59,12 +51,18 @@ const appBarClasses = computed(() => ({
 }
 
 .site-logo-link {
-  display: inline-block;
-}
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 0;
 
-.site-logo {
-  height: 56px; /* large at top */
+}
+:deep(.site-logo) {
+  display: block;
+  height: 100%;
   width: auto;
+  padding: 8px;
+  max-height: var(--v-navbar-height);
 }
 
 </style>

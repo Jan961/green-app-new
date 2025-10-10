@@ -83,17 +83,12 @@ export default {
 .landing {
   position: relative;
   max-width: 1200px;
-  height: calc(100svh - var(--v-layout-top, 64px));
   overflow: hidden; /* clip decorative bg */
   margin-inline: auto;
   padding-top: clamp(16px, 6vh, 64px);
   padding-bottom: clamp(16px, 6vh, 64px);
 }
-@supports not (height: 100svh) {
-  .landing {
-    height: calc(100vh - var(--v-layout-top, 64px));
-  }
-}
+
 
 
 .location-chip .chip-text {
@@ -157,11 +152,6 @@ export default {
 }
 
 @media (max-width: 959px) {
-  .landing {
-    height: auto;
-    min-height: calc(100svh - var(--v-layout-top, 64px));
-    overflow: hidden; /* avoid horizontal scroll while allowing page scroll */
-  }
   .landing::after {
     right: -40px;
     bottom: -120px;
