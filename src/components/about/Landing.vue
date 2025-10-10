@@ -81,12 +81,10 @@ export default {
 
 <style scoped>
 .landing {
+  height: calc(100vh - var(--v-navbar-height));
+  margin-top: var(--v-navbar-height);
   position: relative;
-  max-width: 1200px;
   overflow: hidden; /* clip decorative bg */
-  margin-inline: auto;
-  padding-top: clamp(16px, 6vh, 64px);
-  padding-bottom: clamp(16px, 6vh, 64px);
 }
 
 
