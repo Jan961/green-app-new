@@ -9,16 +9,27 @@
         </RouterLink>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn to="/about" variant="flat">About</v-btn>
-      <v-btn to="/volunteer" variant="flat">Volunteer</v-btn>
-      <v-btn to="/contact" variant="flat">Contact</v-btn>
-      <v-btn to="/donate" color="primary" variant="flat">Donate</v-btn>
+      <HeaderButton to="/about" >About</HeaderButton>
+      <HeaderButton to="/volunteer">Volunteer</HeaderButton>
+      <HeaderButton to="/contact" >Contact</HeaderButton>
+      <v-btn 
+        to="/donate" 
+        color="primary" 
+        class="donate-btn ms-1 me-5" 
+        variant="flat"
+        size="large"
+        width="var(--v-navbar-button-width)"
+        rounded="xl"
+      >
+        Donate
+      </v-btn>
     </v-app-bar>
 
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import SiteLogo from '@/components/icons/SiteLogo.vue'
+import HeaderButton from '@/components/header/HeaderButton.vue'
 const atTop = ref(true)
 function updateAtTop (): void {
   const y = typeof window !== 'undefined' ? (window.scrollY ?? 0) : 0

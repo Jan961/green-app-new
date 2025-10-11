@@ -10,7 +10,7 @@ const lightTheme: ThemeDefinition = {
   colors: {
     background: '#FFFFFF',
     surface: '#FFFFFF',
-    primary: '#1867C0',
+    primary: '#51c25e',
     'primary-darken-1': '#3700B3',
     secondary: '#5CBBF6',
     'secondary-darken-1': '#018786',
@@ -18,9 +18,19 @@ const lightTheme: ThemeDefinition = {
     info: '#2196F3',
     success: '#4CAF50',
     warning: '#FB8C00',
+
+
   },
   variables: {
+    // navbar
     'navbar-height': '64px',
+    'navbar-button-width': '160px',
+
+    'hover-opacity': '0.4',    
+    'activated-opacity': '0.6',
+
+    // colour variant overrides
+    'theme-on-primary':  '255, 255, 255',
   }
 }
 
@@ -29,7 +39,7 @@ const darkTheme: ThemeDefinition = {
   colors: {
     background: '#121212',
     surface: '#121212',
-    primary: '#2196F3',
+    primary: '#51c25e',
     secondary: '#03DAC6',
     error: '#CF6679',
     info: '#2196F3',
