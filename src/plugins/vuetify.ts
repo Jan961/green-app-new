@@ -10,7 +10,7 @@ const lightTheme: ThemeDefinition = {
   colors: {
     background: '#FFFFFF',
     surface: '#FFFFFF',
-    primary: '#51c25e',
+    primary: '#388e3c',
     'primary-darken-1': '#3700B3',
     secondary: '#5CBBF6',
     'secondary-darken-1': '#018786',
@@ -26,11 +26,13 @@ const lightTheme: ThemeDefinition = {
     'navbar-height': '64px',
     'navbar-button-width': '160px',
 
-    'hover-opacity': '0.4',    
-    'activated-opacity': '0.6',
+    'hover-opacity': '0.2',    
+    'activated-opacity': '0.4',
 
     // colour variant overrides
     'theme-on-primary':  '255, 255, 255',
+    'theme-on-background':' 24, 60, 25',
+    'theme-on-surface':' 24, 60, 25',
   }
 }
 

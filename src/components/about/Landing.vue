@@ -15,8 +15,8 @@
           </v-chip>
   
           <h1 class="hero-title mb-6">
-            Visit Green Garden, a
-            <span class="nowrap">vegan permaculture</span>
+            Visit <span class="nowrap">Green Garden</span>,<br/>
+             a vegan permaculture
             retreat in rural Thailand.
           </h1>
   
@@ -101,7 +101,7 @@ export default {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  font-size: clamp(32px, 6vw, 64px);
+  font-size: clamp(32px, 5vw, 56px);
 }
 
 .nowrap {

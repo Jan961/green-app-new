@@ -1,6 +1,6 @@
 <template>
     <v-btn 
-    :to="to" 
+    :to="to || undefined" 
     variant="text"
     width="var(--v-navbar-button-width)"
     size="large"
@@ -12,9 +12,11 @@
     </v-btn>
 </template>
 <script setup lang="ts">
-defineProps<{
-    to: string
-}>()
+withDefaults(defineProps<{
+    to?: string | null
+}>(), {
+    to: null,
+})
 </script>
 <style scoped>
 
@@ -23,15 +25,10 @@ defineProps<{
     overflow: visible;
 }
 
-
 .header-button :deep(.v-btn__overlay){
   background-color: transparent!important;
   border: 1px solid rgba(var(--v-theme-primary));
 }
-
-
-
-
 
 
 </style>
