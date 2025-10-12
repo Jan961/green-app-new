@@ -1,7 +1,7 @@
 <template>
     <v-container :class="[ landingContainerClass, 'py-10']">
-      <v-row align="center" justify="space-between" class="g-8">
-        <v-col cols="12" md="7">
+      <v-row align="start" justify="space-between" :class="{'pt-6': !smAndDown}" >
+        <v-col cols="12" md="6" class="pe-6">
           <v-chip
             class="mb-6 location-chip"
             color="green-darken-2"
@@ -27,7 +27,7 @@
   
           <div class="cta-group">
             <v-btn
-              color="green-darken-2"
+              color="primary"
               rounded="xl"
               size="large"
               class="mr-4 mb-3"
@@ -46,8 +46,8 @@
           </div>
         </v-col>
   
-        <v-col cols="12" md="5">
-          <v-sheet class="video-frame elevation-1" rounded="xl">
+        <v-col cols="12" md="6" class="pt-12">
+          <v-sheet class="video-frame elevation-0" rounded="xl">
             <v-responsive :aspect-ratio="16/9">
               <video
                 :src="mainVideo"
@@ -83,8 +83,10 @@ const landingContainerClass = computed(() => ({
 
 /*  desktop */
 .landing {
-  height: calc(100vh - var(--v-navbar-height));
-  margin-top: var(--v-navbar-height);
+  --bg-opacity: 0.60;
+  --blur-amount: 18px;
+  height: calc(110vh - var(--v-navbar-height-desktop));
+  margin-top: var(--v-navbar-height-desktop);
   position: relative;
   overflow: hidden; /* clip decorative bg */
   z-index: 0; /* establish stacking context so ::after can sit behind */
@@ -92,7 +94,9 @@ const landingContainerClass = computed(() => ({
 
 /*  mobile */
 .landing-mobile {
-  margin-top: var(--v-navbar-height);
+  --bg-opacity: 0.85;
+  --blur-amount: 16px;
+  margin-top: var(--v-navbar-height-mobile);
   position: relative;
   padding-bottom: 40px;
   z-index: 0; /* establish stacking context so ::after can sit behind */
@@ -112,7 +116,7 @@ const landingContainerClass = computed(() => ({
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(32px, 5vw, 48px);
 }
 
 .nowrap {
@@ -125,8 +129,8 @@ const landingContainerClass = computed(() => ({
 }
 
 .video-frame {
-  background: #fff;
-  padding: 10px;
+  background: linear-gradient(90deg, rgba(172, 231, 110, 1), rgba(47, 196, 108, 1));
+  padding: 20px;
   position: relative;
   z-index: 1;
 }
@@ -148,17 +152,62 @@ const landingContainerClass = computed(() => ({
 
 /* Decorative background on the right */
 .landing::after {
+  --ax: 80%;   /* anchor X (background-position) */
+  --ay: 100%;  /* anchor Y */
+
+  background-size: cover; /* preserve aspect ratio and fill */
+  background-position: var(--ax) var(--ay);
   content: "";
   position: absolute;
-  right: -100px;
-  bottom: -160px;
-  width: clamp(420px, 45vw, 780px);
-  height: clamp(420px, 45vw, 780px);
+  inset: 0; /* fill parent */
   background-image: url('@/assets/images/background/green-gradient.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  /* Fade the base image with a longer, smoother tail */
+  -webkit-mask-image: linear-gradient(180deg,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 74%,
+    rgba(0,0,0,0.6) 88%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(180deg,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 74%,
+    rgba(0,0,0,0.6) 88%,
+    rgba(0,0,0,0) 100%
+  );
+  opacity: var(--bg-opacity, 1);
   pointer-events: none;
-  z-index: -1; /* keep decorative bg behind content */
+  z-index: -2; /* keep decorative bg behind blurred overlay and content */
+}
+
+/* Blurred bottom overlay to soften edge into white */
+.landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('@/assets/images/background/green-gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: var(--ax, 80%) var(--ay, 100%);
+  filter: blur(var(--blur-amount, 18px));
+  opacity: var(--bg-opacity, 1);
+  /* Gradual ramp from minimal to heavy blur, then fade out */
+  -webkit-mask-image: linear-gradient(180deg,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.25) 70%,
+    rgba(0,0,0,0.65) 86%,
+    rgba(0,0,0,0.95) 94%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(180deg,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.25) 70%,
+    rgba(0,0,0,0.65) 86%,
+    rgba(0,0,0,0.95) 94%,
+    rgba(0,0,0,0) 100%
+  );
+  pointer-events: none;
+  z-index: -1; /* above ::after, below content */
 }
 /* .landing-mobile::after {
   content: "";
@@ -181,10 +230,50 @@ const landingContainerClass = computed(() => ({
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
+  -webkit-mask-image: linear-gradient(180deg,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 68%,
+    rgba(0,0,0,0.6) 86%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(180deg,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 68%,
+    rgba(0,0,0,0.6) 86%,
+    rgba(0,0,0,0) 100%
+  );
+  opacity: var(--bg-opacity, 1);
   pointer-events: none;
-  z-index: -1; /* keep decorative bg behind content */
-  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  z-index: -2; /* keep decorative bg behind blurred overlay and content */
+}
+
+/* Blurred bottom overlay for mobile */
+.landing-mobile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('@/assets/images/background/green-gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  filter: blur(var(--blur-amount, 16px));
+  opacity: var(--bg-opacity, 1);
+  -webkit-mask-image: linear-gradient(180deg,
+    rgba(0,0,0,0) 52%,
+    rgba(0,0,0,0.25) 68%,
+    rgba(0,0,0,0.6) 84%,
+    rgba(0,0,0,0.9) 92%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(180deg,
+    rgba(0,0,0,0) 52%,
+    rgba(0,0,0,0.25) 68%,
+    rgba(0,0,0,0.6) 84%,
+    rgba(0,0,0,0.9) 92%,
+    rgba(0,0,0,0) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 

@@ -3,14 +3,14 @@
     <v-app-bar 
       v-if="smAndDown"
       :class="mobileAppBarClasses"
-      height='var(--v-navbar-height)'
+      height='var(--v-navbar-height-mobile)'
       flat
       >
         <v-spacer />
         <v-toolbar-title class="site-logo-title-mobile">
           <RouterLink to="/" class="site-logo-link" aria-label="Home">
-            <SiteLogo v-if="!isMobileMenuOpen" class="site-logo" />
-            <SiteLogoWhite v-else class="site-logo" />
+            <SiteLogo v-if="!isMobileMenuOpen" class="site-logo  site-logo-mobile" />
+            <SiteLogoWhite v-else class="site-logo site-logo-mobile" />
           </RouterLink>
         </v-toolbar-title>
         <v-spacer />
@@ -49,12 +49,12 @@
     <v-app-bar 
     v-else
     :class="desktopAppBarClasses"
-    height='var(--v-navbar-height)'
+    height='var(--v-navbar-height-desktop)'
     flat
     >
       <v-toolbar-title class="site-logo-title-desktop">
         <RouterLink to="/" class="site-logo-link" aria-label="Home">
-          <SiteLogo class="site-logo" />
+          <SiteLogo class="site-logo site-logo-desktop" />
         </RouterLink>
       </v-toolbar-title>
       <v-spacer />
@@ -110,6 +110,17 @@ const mobileAppBarClasses = computed(() => ({
 
 
 /*  desktop */
+.desktop-app-bar--top {
+  transition:  box-shadow 1000ms ease, backdrop-filter 1000ms ease;
+  box-shadow: none;
+}
+.desktop-app-bar--scrolled {
+  transition: box-shadow 1000ms ease, backdrop-filter 200ms ease;
+  backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: var(--shadow);
+  }
+
+
 
   /*  mobile */
   .mobile-app-bar--overlay-open {
@@ -122,7 +133,7 @@ const mobileAppBarClasses = computed(() => ({
 
 :deep(.mobile-menu-content) {
   width: 100%;
-  padding-top: var(--v-navbar-height);
+  padding-top: var(--v-navbar-height-mobile);
   height: 100%;
   background:
       url('@/assets/images/background/bg-gradient.png'),
@@ -161,7 +172,7 @@ const mobileAppBarClasses = computed(() => ({
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  min-height: var(--v-navbar-height);
+  min-height: var(--v-navbar-height-mobile);
 }
 
 .mobile-menu-divider {
@@ -188,7 +199,12 @@ const mobileAppBarClasses = computed(() => ({
   height: 100%;
   width: auto;
   padding: 8px;
-  max-height: var(--v-navbar-height);
+}
+:deep(.site-logo-desktop) {
+  max-height: var(--v-navbar-height-desktop);
+}
+:deep(.site-logo-mobile) {
+  max-height: var(--v-navbar-height-mobile);
 }
 
 

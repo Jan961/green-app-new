@@ -10,7 +10,7 @@ const lightTheme: ThemeDefinition = {
   colors: {
     background: '#FFFFFF',
     surface: '#FFFFFF',
-    primary: '#388e3c',
+    primary: '#51C25E',
     'primary-darken-1': '#3700B3',
     secondary: '#5CBBF6',
     'secondary-darken-1': '#018786',
@@ -23,7 +23,8 @@ const lightTheme: ThemeDefinition = {
   },
   variables: {
     // navbar
-    'navbar-height': '64px',
+    'navbar-height-desktop': '72px',
+    'navbar-height-mobile': '64px',
     'navbar-button-width': '160px',
 
     'hover-opacity': '0.2',    

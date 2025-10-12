@@ -28,7 +28,10 @@ const defaultMessage = 'Hello Green Garden, I would like to contribute.'
 const whatsAppUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(defaultMessage)}`
 
 const ctaStyle = {
-  backgroundImage: `linear-gradient(90deg, rgba(172, 231, 110, 0.85), rgba(47, 196, 108, 0.92)), url(${bgGradient})`,
+  backgroundImage: 
+  `url(${bgGradient}),
+   linear-gradient(90deg, rgba(172, 231, 110, 0.85), 
+   rgba(47, 196, 108, 0.92))`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
 }
