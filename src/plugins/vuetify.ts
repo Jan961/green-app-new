@@ -3,6 +3,9 @@ import { createVuetify, type ThemeDefinition } from 'vuetify'
 import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import SiteLogo from '@/components/icons/SiteLogo.vue'
+import WwoofLogo from '@/components/icons/WwoofLogo.vue'
+import WorldpackersLogo from '@/components/icons/WorldpackersLogo.vue'
+import HelpxLogo from '@/components/icons/HelpxLogo.vue'
 
 
 const lightTheme: ThemeDefinition = {
@@ -66,7 +69,7 @@ const vuetify = createVuetify({
   },
   icons: {
     defaultSet: 'mdi',
-    aliases: { ...aliases, siteLogo: SiteLogo },
+    aliases: { ...aliases, siteLogo: SiteLogo, wwoofLogo: WwoofLogo, worldpackersLogo: WorldpackersLogo, helpxLogo: HelpxLogo },
     sets: { mdi },
   },
 })

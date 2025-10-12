@@ -22,15 +22,16 @@
                 </div>
            
                 <div :class="['d-flex align-center justify-space-between brands', smAndDown ? 'flex-column' : 'flex-row']">
-                    <v-img src="@/assets/icons/wwoof.svg" alt="WWOOF" height="72" width="auto" contain class="brand-logo" />
-                    <v-img src="@/assets/icons/worldpakers.svg" alt="Worldpackers" height="64" width="auto" contain class="brand-logo" />
-                    <v-img src="@/assets/icons/helpx.svg" alt="HelpX" height="64" width="auto" contain class="brand-logo" />
+                    <v-btn icon="$wwoofLogo" class="brand-logo" />
+                    <v-btn icon="$worldpackersLogo" class="brand-logo" />
+                    <v-btn icon="$helpxLogo" class="brand-logo" />
                 </div>
         </div>
     </v-container>
 </template>
 <script setup lang="ts">
 import { useDisplay } from 'vuetify'
+
 const { smAndDown } = useDisplay()
 </script>
 <style scoped>

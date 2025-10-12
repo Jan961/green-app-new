@@ -93,6 +93,7 @@ const landingContainerClass = computed(() => ({
   --elevate-text: 0 2px 12px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.9);
   --elevate-drop: 5px 5px 22px rgba(255,255,255,1);
   --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.22) inset;
+  --video-frame-shadow: 0 3px 16px rgba(255,255,255,0.30);
   /* how strongly the blurred area lightens toward white (desktop only) */
   --lighten-low: 0.18;
   --lighten-mid: 0.45;
@@ -111,6 +112,7 @@ const landingContainerClass = computed(() => ({
   --elevate-text: 0 1px 0 rgba(255,255,255,0.35), 0 0 10px rgba(255,255,255,0.08);
   --elevate-drop: 0 2px 10px rgba(255,255,255,0.18);
   --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.20) inset;
+  --video-frame-shadow: 2px 2px 12px rgba(255,255,255,0.6);
   margin-top: var(--v-navbar-height-mobile);
   position: relative;
   padding-bottom: 40px;
@@ -156,10 +158,15 @@ const landingContainerClass = computed(() => ({
 }
 
 .video-frame {
-
+  filter: none; /* override global drop-shadow; use dedicated lighter shadow below */
+  box-shadow: var(--video-frame-shadow) !important; /* override v-sheet.elevation-0 */
   padding: 20px;
   position: relative;
   z-index: 1;
+}
+.video-frame .video {
+  /* prevent heavy filter-based shadow from applying to the inner video */
+  filter: none;
 }
 .video-frame-desktop {
   background: rgba(var(--v-theme-primary), 1 );
