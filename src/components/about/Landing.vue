@@ -91,7 +91,7 @@ const landingContainerClass = computed(() => ({
   --bg-opacity: 0.90;
   --blur-amount: 18px;
   --elevate-text: 0 2px 12px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.9);
-  --elevate-drop: 0 2px 12px rgba(255,255,255,0.18);
+  --elevate-drop: 5px 5px 22px rgba(255,255,255,1);
   --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.22) inset;
   /* how strongly the blurred area lightens toward white (desktop only) */
   --lighten-low: 0.18;
@@ -129,6 +129,14 @@ const landingContainerClass = computed(() => ({
 /* Make chip surface white while preserving gradient text inside */
 .location-chip {
   background-color: #ffffff !important;
+  border-color: rgba(var(--v-theme-light-green), 1) !important;
+  border-width: 1px !important;
+  filter: drop-shadow(var(--elevate-drop)) !important;
+}
+
+.location-chip:hover,
+.location-chip:focus-visible {
+  filter: drop-shadow(var(--elevate-drop)) !important;
 }
 
 .hero-title {

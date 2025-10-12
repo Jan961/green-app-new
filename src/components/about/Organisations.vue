@@ -1,7 +1,7 @@
 <template>
     <v-container class="organisations-section py-12">
-        <v-row class="align-center">
-            <v-col cols="12" md="6">
+        <div :class="['d-flex align-center', smAndDown ? 'flex-column' : 'flex-row']">
+
                 <div class="d-flex align-center">
                     <v-img
                         src="@/assets/icons/heart.svg"
@@ -11,27 +11,27 @@
                         class="heart-icon"
                         cover
                     />
-                    <div class="ms-6">
-                        <div class="text-h4 text-high-emphasis font-weight-bold title-line">
+                    <div class="ms-6 me-14">
+                        <div class="text-h5 text-high-emphasis font-weight-bold title-line">
                             Hosted <span class="text-success">400+</span> volunteers
                         </div>
-                        <div class="text-h4 text-high-emphasis font-weight-bold title-line">
+                        <div class="text-h5 text-high-emphasis font-weight-bold title-line">
                             from around the world
                         </div>
                     </div>
                 </div>
-            </v-col>
-            <v-col cols="12" md="6">
-                <div class="d-flex align-center justify-space-between brands">
-                    <v-img src="@/assets/icons/wwoof.svg" alt="WWOOF" height="72" contain class="brand-logo" />
-                    <v-img src="@/assets/icons/worldpakers.svg" alt="Worldpackers" height="64" contain class="brand-logo" />
-                    <v-img src="@/assets/icons/helpx.svg" alt="HelpX" height="64" contain class="brand-logo" />
+           
+                <div :class="['d-flex align-center justify-space-between brands', smAndDown ? 'flex-column' : 'flex-row']">
+                    <v-img src="@/assets/icons/wwoof.svg" alt="WWOOF" height="72" width="auto" contain class="brand-logo" />
+                    <v-img src="@/assets/icons/worldpakers.svg" alt="Worldpackers" height="64" width="auto" contain class="brand-logo" />
+                    <v-img src="@/assets/icons/helpx.svg" alt="HelpX" height="64" width="auto" contain class="brand-logo" />
                 </div>
-            </v-col>
-        </v-row>
+        </div>
     </v-container>
 </template>
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
+const { smAndDown } = useDisplay()
 </script>
 <style scoped>
 .organisations-section {
