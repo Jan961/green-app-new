@@ -1,42 +1,26 @@
 <template>
-    <!-- Desktop navigation -->
+ <!-- Mobile navigation -->
     <v-app-bar 
-    v-if="mdAndUp"
-    :class="[ appBarClasses, { 'app-bar--no-shadow': isMobileMenuOpen } ]"
-    height='var(--v-navbar-height)'
-    >
-      <v-toolbar-title class="site-logo-title">
-        <RouterLink to="/" class="site-logo-link" aria-label="Home">
-          <SiteLogo class="site-logo" />
-        </RouterLink>
-      </v-toolbar-title>
-      <v-spacer />
-      <HeaderButton to="/about" >About</HeaderButton>
-      <HeaderButton to="/volunteer">Volunteer</HeaderButton>
-      <HeaderButton to="/contact" >Contact</HeaderButton>
-      <PrimaryButton to="/donate" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
-    </v-app-bar>
+      v-if="smAndDown"
+      :class="mobileAppBarClasses"
+      height='var(--v-navbar-height)'
+      flat
+      >
+        <v-spacer />
+        <v-toolbar-title class="site-logo-title-mobile">
+          <RouterLink to="/" class="site-logo-link" aria-label="Home">
+            <SiteLogo class="site-logo" />
+          </RouterLink>
+        </v-toolbar-title>
+        <v-spacer />
+        <v-app-bar-nav-icon
+          :icon="isMobileMenuOpen ? 'mdi-close' : 'mdi-menu'"
+          :aria-label="isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+        />
+      </v-app-bar>
 
-    <!-- Mobile navigation -->
-    <v-app-bar 
-    v-if="smAndDown"
-    :class="[ appBarClasses, { 'app-bar--no-shadow': isMobileMenuOpen } ]"
-    height='var(--v-navbar-height)'
-    >
-      <v-toolbar-title class="site-logo-title">
-        <RouterLink to="/" class="site-logo-link" aria-label="Home">
-          <SiteLogo class="site-logo" />
-        </RouterLink>
-      </v-toolbar-title>
-      <v-spacer />
-      <v-app-bar-nav-icon
-        :icon="isMobileMenuOpen ? 'mdi-close' : 'mdi-menu'"
-        :aria-label="isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
-        @click="isMobileMenuOpen = !isMobileMenuOpen"
-      />
-    </v-app-bar>
-
-    <!-- Fullscreen overlay menu -->
+      <!-- Fullscreen overlay menu -->
     <v-overlay
       v-if="smAndDown"
       v-model="isMobileMenuOpen"
@@ -59,6 +43,30 @@
       </v-sheet>
     </v-overlay>
 
+
+    <!-- Desktop navigation -->
+    <v-app-bar 
+    v-else
+    :class="desktopAppBarClasses"
+    height='var(--v-navbar-height)'
+    flat
+    >
+      <v-toolbar-title class="site-logo-title-desktop">
+        <RouterLink to="/" class="site-logo-link" aria-label="Home">
+          <SiteLogo class="site-logo" />
+        </RouterLink>
+      </v-toolbar-title>
+      <v-spacer />
+      <HeaderButton to="/about" >About</HeaderButton>
+      <HeaderButton to="/volunteer">Volunteer</HeaderButton>
+      <HeaderButton to="/contact" >Contact</HeaderButton>
+      <PrimaryButton to="/donate" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
+    </v-app-bar>
+
+   
+
+   
+
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
@@ -72,6 +80,7 @@ const atTop = ref(true)
 function updateAtTop (): void {
   const y = typeof window !== 'undefined' ? (window.scrollY ?? 0) : 0
   atTop.value = y <= 0
+  console.log('atTop', atTop.value)
 }
 onMounted(() => {
   updateAtTop()
@@ -80,45 +89,45 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', updateAtTop)
 })
-const appBarClasses = computed(() => ({
-  'app-bar--top': atTop.value,
-  'app-bar--scrolled': !atTop.value,
+const desktopAppBarClasses = computed(() => ({
+  'desktop-app-bar--top': atTop.value,
+  'desktop-app-bar--scrolled': !atTop.value,
 }))
+const mobileAppBarClasses = computed(() => ({
+  'mobile-app-bar--overlay-closed': !isMobileMenuOpen.value,
+  'mobile-app-bar--overlay-open': isMobileMenuOpen.value,
+}))
+
+
 </script>
 <style scoped>
+/* variables */
+.v-app-bar {
+  --shadow: 0 10px 25px rgba(27, 94, 32, 0.08), 0 2px 8px rgba(0,0,0,0.04);
+}
 
-.app-bar--top {
-  transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
-  background-color: red;
+
+/*  desktop */
+.desktop-app-bar--top {
+  transition:  box-shadow 1000ms ease, backdrop-filter 1000ms ease;
   box-shadow: none;
 }
-.app-bar--scrolled {
-  transition: background-color 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
-  background-color: rgba(255, 255, 255, 0.85);
+.desktop-app-bar--scrolled {
+  transition: box-shadow 1000ms ease, backdrop-filter 200ms ease;
   backdrop-filter: saturate(180%) blur(12px);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-}
+  box-shadow: var(--shadow);
+  }
 
-.app-bar--no-shadow {
-  box-shadow: none !important;
-}
 
-.site-logo-link {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  line-height: 0;
+  /*  mobile */
+  .mobile-app-bar--overlay-open {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .mobile-app-bar--overlay-closed {
+    box-shadow: var(--shadow);
+  }
 
-}
-:deep(.site-logo) {
-  display: block;
-  height: 100%;
-  width: auto;
-  padding: 8px;
-  max-height: var(--v-navbar-height);
-}
-
-/* Mobile overlay menu */
 :deep(.mobile-menu-content) {
   width: 100%;
   height: calc(100% - var(--v-navbar-height));
@@ -149,5 +158,31 @@ const appBarClasses = computed(() => ({
   padding: 8px 12px;
   min-height: var(--v-navbar-height);
 }
+
+/*  common */
+
+.app-bar--no-shadow {
+  box-shadow: none !important;
+}
+
+.site-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 0;
+
+}
+
+
+:deep(.site-logo) {
+  display: block;
+  height: 100%;
+  width: auto;
+  padding: 8px;
+  max-height: var(--v-navbar-height);
+}
+
+
+
 
 </style>

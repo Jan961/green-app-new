@@ -32,7 +32,7 @@ const lightTheme: ThemeDefinition = {
     // colour variant overrides
     'theme-on-primary':  '255, 255, 255',
     'theme-on-background':' 24, 60, 25',
-    'theme-on-surface':' 24, 60, 25',
+    'theme-on-surface':' 24, 60, 25'
   }
 }
 
