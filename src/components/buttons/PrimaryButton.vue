@@ -6,6 +6,7 @@
     rounded="xl"
     variant="elevated"
     :width="width"
+    :class="class"
     >
         <slot />
     </v-btn>
@@ -14,5 +15,6 @@
 defineProps<{
     to?: string
     width?: string | number
+    class?: string
 }>()
 </script>

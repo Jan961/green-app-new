@@ -39,7 +39,7 @@
           <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" rounded="xl" @click="isMobileMenuOpen = false" />
         </v-list>
         <div class="mobile-menu-cta">
-          <v-btn to="/donate" color="primary" size="large" block @click="isMobileMenuOpen = false">Donate</v-btn>
+          <v-btn to="/donate" color="primary" size="large" rounded="xl" block @click="isMobileMenuOpen = false">Donate</v-btn>
         </div>
       </v-sheet>
     </v-overlay>
@@ -61,7 +61,7 @@
       <HeaderButton to="/about" >About</HeaderButton>
       <HeaderButton to="/volunteer">Volunteer</HeaderButton>
       <HeaderButton to="/contact" >Contact</HeaderButton>
-      <PrimaryButton to="/donate" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
+      <PrimaryButton to="/donate" class="me-5" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
     </v-app-bar>
 
    
@@ -73,7 +73,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useDisplay } from 'vuetify'
 import SiteLogo from '@/components/icons/SiteLogo.vue'
-import SiteLogoWhite from '@/components/icons/SiteLogoWhite.vue'
+import SiteLogoWhite from '@/components/icons/SiteLogoDark.vue'
 import HeaderButton from '@/components/buttons/HeaderButton.vue'
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
 const { smAndDown} = useDisplay()

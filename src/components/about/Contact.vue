@@ -11,8 +11,8 @@
           size="x-large"
           rounded="xl"
           variant="flat"
+          prepend-icon="mdi-whatsapp"
         >
-          <v-icon start>mdi-whatsapp</v-icon>
           Contact us on WhatsApp
         </v-btn>
       </div>
@@ -41,7 +41,7 @@ const ctaStyle = {
 }
 
 .cta-sheet {
-  padding: clamp(28px, 6vw, 56px);
+  padding: clamp(28px, 6vw, 56px) 10px clamp(28px, 6vw, 56px) 10px;
 }
 
 .cta-content {
@@ -61,7 +61,6 @@ const ctaStyle = {
 
 .whatsapp-btn {
   background: #ffffff !important;
-  padding-inline: 28px;
   font-weight: 700;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }

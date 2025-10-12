@@ -1,5 +1,5 @@
 <template>
-    <v-container class="landing py-10">
+    <v-container :class="[ landingContainerClass, 'py-10']">
       <v-row align="center" justify="space-between" class="g-8">
         <v-col cols="12" md="7">
           <v-chip
@@ -34,7 +34,7 @@
             >
               Apply to Volunteer
             </v-btn>
-            <v-btn
+            <!-- <v-btn
               variant="outlined"
               color="green-darken-2"
               rounded="xl"
@@ -42,7 +42,7 @@
               class="mb-3"
             >
               Buy Our Products
-            </v-btn>
+            </v-btn> -->
           </div>
         </v-col>
   
@@ -64,29 +64,40 @@
     </v-container>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import mainVideo from '@/assets/videos/main_video.mp4'
+import { useDisplay } from 'vuetify'
+import { computed } from 'vue'
+const { smAndDown } = useDisplay()
+const landingContainerClass = computed(() => ({
+  'landing': !smAndDown.value,
+  'landing-mobile': smAndDown.value,
+}))
 
-export default {
-  name: 'Landing',
-  data() {
-    return {
-      mainVideo,
-    }
-  },
-}
+
 
 
 </script>
 
 <style scoped>
+
+/*  desktop */
 .landing {
   height: calc(100vh - var(--v-navbar-height));
   margin-top: var(--v-navbar-height);
   position: relative;
   overflow: hidden; /* clip decorative bg */
+  z-index: 0; /* establish stacking context so ::after can sit behind */
 }
 
+/*  mobile */
+.landing-mobile {
+  margin-top: var(--v-navbar-height);
+  position: relative;
+  padding-bottom: 40px;
+  z-index: 0; /* establish stacking context so ::after can sit behind */
+
+}
 
 
 .location-chip .chip-text {
@@ -132,6 +143,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 /* Decorative background on the right */
@@ -146,24 +158,35 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
+  z-index: -1; /* keep decorative bg behind content */
+}
+/* .landing-mobile::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
   z-index: 0;
+} */
+
+/* Mobile background as a full-cover layer with soft fade at bottom */
+.landing-mobile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('@/assets/images/background/green-gradient.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  pointer-events: none;
+  z-index: -1; /* keep decorative bg behind content */
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
 }
 
-@media (max-width: 959px) {
-  .landing::after {
-    right: -40px;
-    bottom: -120px;
-    width: min(520px, 90vw);
-    height: min(520px, 90vw);
-  }
-  .landing > .v-row {
-    min-height: auto;
-  }
-}
 
-/* Ensure row fills the hero height for vertical centering */
-.landing > .v-row {
-  min-height: 100%;
-}
 
 </style>
