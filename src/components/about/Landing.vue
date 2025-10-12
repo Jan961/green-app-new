@@ -93,6 +93,10 @@ const landingContainerClass = computed(() => ({
   --elevate-text: 0 2px 12px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.9);
   --elevate-drop: 0 2px 12px rgba(255,255,255,0.18);
   --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.22) inset;
+  /* how strongly the blurred area lightens toward white (desktop only) */
+  --lighten-low: 0.18;
+  --lighten-mid: 0.45;
+  --lighten-high: 0.78;
   height: calc(110vh - var(--v-navbar-height-desktop));
   margin-top: var(--v-navbar-height-desktop);
   position: relative;
@@ -119,8 +123,12 @@ const landingContainerClass = computed(() => ({
   background: linear-gradient(90deg, #51C25E 0%, #ADE157 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
+}
+
+/* Make chip surface white while preserving gradient text inside */
+.location-chip {
+  background-color: #ffffff !important;
 }
 
 .hero-title {
@@ -146,7 +154,7 @@ const landingContainerClass = computed(() => ({
   z-index: 1;
 }
 .video-frame-desktop {
-  background: #fff;
+  background: rgba(var(--v-theme-primary), 1 );
 }
 .video-frame-mobile {
   background: linear-gradient(90deg, rgba(172, 231, 110, 1), rgba(47, 196, 108, 1));
@@ -168,7 +176,7 @@ const landingContainerClass = computed(() => ({
 }
 
 /* Gentle white elevation for readability across the hero */
-:where(.landing, .landing-mobile) :where(h1, h2, h3, h4, h5, h6, p, .lead, .chip-text, .v-btn, .v-chip, .v-btn__content, .v-chip__content) {
+:where(.landing, .landing-mobile) :where(h1, h2, h3, h4, h5, h6, p, .lead) {
   text-shadow: var(--elevate-text);
 }
 
@@ -215,12 +223,22 @@ const landingContainerClass = computed(() => ({
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('@/assets/images/background/green-gradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: var(--ax, 80%) var(--ay, 100%);
+  /* blend a white gradient with the blurred image so it both lightens and fades */
+  background-image:
+    linear-gradient(180deg,
+      rgba(255,255,255,0) 56%,
+      rgba(255,255,255,var(--lighten-low)) 72%,
+      rgba(255,255,255,var(--lighten-mid)) 86%,
+      rgba(255,255,255,var(--lighten-high)) 100%
+    ),
+    url('@/assets/images/background/green-gradient.png');
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: var(--ax, 80%) var(--ay, 100%), var(--ax, 80%) var(--ay, 100%);
+  background-blend-mode: screen, normal; /* screen makes the white gradient lighten the image */
   filter: blur(var(--blur-amount, 18px));
-  opacity: var(--bg-opacity, 1);
+  /* opacity follows mask below; keep element fully opaque for blending accuracy */
+  opacity: 1;
   /* Gradual ramp from minimal to heavy blur, then fade out */
   -webkit-mask-image: linear-gradient(180deg,
     rgba(0,0,0,0) 55%,
