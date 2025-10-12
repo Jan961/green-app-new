@@ -43,11 +43,16 @@
             >
               Buy Our Products
             </v-btn> -->
-          </div>
+          </div>  
         </v-col>
   
         <v-col cols="12" md="6" class="pt-12">
-          <v-sheet class="video-frame elevation-0" rounded="xl">
+          <v-sheet :class="[
+            'video-frame',
+            'elevation-0',
+            smAndDown ? 'video-frame-mobile' : 'video-frame-desktop'  
+           ]" 
+           rounded="xl">
             <v-responsive :aspect-ratio="16/9">
               <video
                 :src="mainVideo"
@@ -83,8 +88,11 @@ const landingContainerClass = computed(() => ({
 
 /*  desktop */
 .landing {
-  --bg-opacity: 0.60;
+  --bg-opacity: 0.90;
   --blur-amount: 18px;
+  --elevate-text: 0 2px 12px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.9);
+  --elevate-drop: 0 2px 12px rgba(255,255,255,0.18);
+  --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.22) inset;
   height: calc(110vh - var(--v-navbar-height-desktop));
   margin-top: var(--v-navbar-height-desktop);
   position: relative;
@@ -96,6 +104,9 @@ const landingContainerClass = computed(() => ({
 .landing-mobile {
   --bg-opacity: 0.85;
   --blur-amount: 16px;
+  --elevate-text: 0 1px 0 rgba(255,255,255,0.35), 0 0 10px rgba(255,255,255,0.08);
+  --elevate-drop: 0 2px 10px rgba(255,255,255,0.18);
+  --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.20) inset;
   margin-top: var(--v-navbar-height-mobile);
   position: relative;
   padding-bottom: 40px;
@@ -129,10 +140,16 @@ const landingContainerClass = computed(() => ({
 }
 
 .video-frame {
-  background: linear-gradient(90deg, rgba(172, 231, 110, 1), rgba(47, 196, 108, 1));
+
   padding: 20px;
   position: relative;
   z-index: 1;
+}
+.video-frame-desktop {
+  background: #fff;
+}
+.video-frame-mobile {
+  background: linear-gradient(90deg, rgba(172, 231, 110, 1), rgba(47, 196, 108, 1));
 }
 
 .video {
@@ -148,6 +165,19 @@ const landingContainerClass = computed(() => ({
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+/* Gentle white elevation for readability across the hero */
+:where(.landing, .landing-mobile) :where(h1, h2, h3, h4, h5, h6, p, .lead, .chip-text, .v-btn, .v-chip, .v-btn__content, .v-chip__content) {
+  text-shadow: var(--elevate-text);
+}
+
+:where(.landing, .landing-mobile) :where(.v-btn, .v-chip, .video-frame, .v-sheet, video, img) {
+  filter: drop-shadow(var(--elevate-drop));
+}
+
+:where(.landing, .landing-mobile) :where(.v-btn, .v-chip, .video-frame, .v-sheet) {
+  box-shadow: var(--elevate-stroke);
 }
 
 /* Decorative background on the right */
