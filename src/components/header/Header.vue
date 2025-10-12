@@ -9,7 +9,8 @@
         <v-spacer />
         <v-toolbar-title class="site-logo-title-mobile">
           <RouterLink to="/" class="site-logo-link" aria-label="Home">
-            <SiteLogo class="site-logo" />
+            <SiteLogo v-if="!isMobileMenuOpen" class="site-logo" />
+            <SiteLogoWhite v-else class="site-logo" />
           </RouterLink>
         </v-toolbar-title>
         <v-spacer />
@@ -26,16 +27,16 @@
       v-model="isMobileMenuOpen"
       class="mobile-menu-overlay"
       content-class="mobile-menu-content"
-      scrim="rgba(0,0,0,0.6)"
       :z-index="900"
       @click:outside="isMobileMenuOpen = false"
       transition="fade-transition"
     >
-      <v-sheet class="mobile-menu" color="surface" elevation="0">
-        <v-list class="mobile-menu-list" density="comfortable" nav>
-          <v-list-item to="/about" title="About" prepend-icon="mdi-information-outline" @click="isMobileMenuOpen = false" />
-          <v-list-item to="/volunteer" title="Volunteer" prepend-icon="mdi-hand-heart-outline" @click="isMobileMenuOpen = false" />
-          <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" @click="isMobileMenuOpen = false" />
+      <v-sheet class="mobile-menu-sheet" elevation="0">
+        <v-divider color="primary" length="90%" thickness="3" class="mobile-menu-divider"/>
+        <v-list class="mobile-menu-list pt-3" density="comfortable" nav>
+          <v-list-item to="/about" title="About" prepend-icon="mdi-information-outline" rounded="xl" @click="isMobileMenuOpen = false" />
+          <v-list-item to="/volunteer" title="Volunteer" prepend-icon="mdi-hand-heart-outline" rounded="xl" @click="isMobileMenuOpen = false" />
+          <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" rounded="xl" @click="isMobileMenuOpen = false" />
         </v-list>
         <div class="mobile-menu-cta">
           <v-btn to="/donate" color="primary" size="large" block @click="isMobileMenuOpen = false">Donate</v-btn>
@@ -72,9 +73,10 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useDisplay } from 'vuetify'
 import SiteLogo from '@/components/icons/SiteLogo.vue'
+import SiteLogoWhite from '@/components/icons/SiteLogoWhite.vue'
 import HeaderButton from '@/components/buttons/HeaderButton.vue'
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
-const { smAndDown, mdAndUp } = useDisplay()
+const { smAndDown} = useDisplay()
 const isMobileMenuOpen = ref(false)
 const atTop = ref(true)
 function updateAtTop (): void {
@@ -108,20 +110,10 @@ const mobileAppBarClasses = computed(() => ({
 
 
 /*  desktop */
-.desktop-app-bar--top {
-  transition:  box-shadow 1000ms ease, backdrop-filter 1000ms ease;
-  box-shadow: none;
-}
-.desktop-app-bar--scrolled {
-  transition: box-shadow 1000ms ease, backdrop-filter 200ms ease;
-  backdrop-filter: saturate(180%) blur(12px);
-  box-shadow: var(--shadow);
-  }
-
 
   /*  mobile */
   .mobile-app-bar--overlay-open {
-    background-color: transparent;
+    background-color: transparent!important;
     box-shadow: none;
   }
   .mobile-app-bar--overlay-closed {
@@ -130,19 +122,32 @@ const mobileAppBarClasses = computed(() => ({
 
 :deep(.mobile-menu-content) {
   width: 100%;
-  height: calc(100% - var(--v-navbar-height));
-  margin-top: var(--v-navbar-height);
+  padding-top: var(--v-navbar-height);
+  height: 100%;
+  background:
+      url('@/assets/images/background/bg-gradient.png'),
+      linear-gradient(90deg, rgba(172, 231, 110, 1), rgba(47, 196, 108, 1));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.mobile-menu {
+.mobile-menu-sheet {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgba(var(--v-theme-surface), 1);
+  background-color: transparent;
+
+
 }
+.mobile-menu-list {
+  background-color: transparent;
+}
+
 .mobile-menu-list :deep(.v-list-item-title) {
   font-size: 18px;
   font-weight: 600;
+
 }
 .mobile-menu-list :deep(.v-list-item) {
   padding-inline: 20px;
@@ -157,6 +162,10 @@ const mobileAppBarClasses = computed(() => ({
   justify-content: space-between;
   padding: 8px 12px;
   min-height: var(--v-navbar-height);
+}
+
+.mobile-menu-divider {
+  align-self: center;
 }
 
 /*  common */
