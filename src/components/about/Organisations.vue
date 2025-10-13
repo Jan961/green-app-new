@@ -22,13 +22,13 @@
                 </div>
            
                 <div :class="['d-flex align-center', smAndDown ? 'flex-column ga-0' : 'flex-row ga-12']">
-                    <v-btn :ripple="false" variant="plain" size="200" class="brand-logo" >
+                    <v-btn :ripple="false" variant="plain" size="200"  >
                         <v-icon icon="$wwoofLogo" size="200" class="brand-logo" />
                     </v-btn>
-                    <v-btn :ripple="false" variant="plain" size="200" class="brand-logo" >
+                    <v-btn :ripple="false" variant="plain" size="200" >
                         <v-icon icon="$worldpackersLogo" size="200" class="brand-logo" />
                     </v-btn>
-                    <v-btn :ripple="false" variant="plain" size="200" class="brand-logo" >
+                    <v-btn :ripple="false" variant="plain" size="200" >
                         <v-icon icon="$helpxLogo" size="200" class="brand-logo" />
                     </v-btn>
                 </div>
@@ -53,16 +53,21 @@ const { smAndDown } = useDisplay()
 }
 
 .brand-logo {
-    opacity: 0.8;
-    filter: grayscale(100%);
+    opacity: 0.7;
+    color: grey;
+    transition: color 0.5s ease, opacity 0.5s ease;
 }
-@media (max-width: 960px) {
+.brand-logo:hover {
+    opacity: 1;
+    color: rgb(var(--v-theme-primary));
+}
+/* @media (max-width: 960px) {
     .brands {
         justify-content: center;
         gap: 32px;
         margin-top: 24px;
     }
-}
+} */
 
 /* https://wwoofindependents.org/ */
 /* https://www.worldpackers.com/positions/76186 */

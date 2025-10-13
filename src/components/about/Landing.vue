@@ -91,7 +91,7 @@ const landingContainerClass = computed(() => ({
   --bg-opacity: 0.90;
   --blur-amount: 18px;
   --elevate-text: 0 2px 12px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.9);
-  --elevate-drop: 5px 5px 22px rgba(255,255,255,1);
+  --elevate-drop: 5px 5px 12px rgba(255,255,255,0.6);
   --elevate-stroke: 0 0 0 1px rgba(255,255,255,0.22) inset;
   --video-frame-shadow: 0 3px 16px rgba(255,255,255,0.30);
   /* how strongly the blurred area lightens toward white (desktop only) */

@@ -54,7 +54,7 @@ function prev() {
 </script>
 
 <template>
-    <v-container class="py-12" fluid>
+    <v-container class="py-12 my-12" fluid>
         <v-row align="center" no-gutters>
             <v-col cols="1" class="d-none d-md-flex justify-center">
                 <v-btn icon variant="text" color="success" @click="prev">
