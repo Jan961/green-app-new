@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import ChildrenIcon from '@/components/icons/accomplishments/Children.vue'
+import PlantIcon from '@/components/icons/accomplishments/Plant.vue'
+import type { Component } from 'vue'
 type StatCard = {
     id: number
     label: string
     value?: string
-    icon: string
+    icon: string | Component
     color?: string
     emphasis?: boolean
 }
@@ -13,7 +16,7 @@ const statCards: StatCard[] = [
         id: 1,
         label: 'Planted forest trees',
         value: '1,500+',
-        icon: 'mdi-tree',
+        icon: 'mdi-sprout',
     },
     {
         id: 2,
@@ -30,8 +33,8 @@ const statCards: StatCard[] = [
     {
         id: 4,
         label: 'Dozens of children have participated in our classes',
-        icon: 'mdi-sprout',
-        color: 'success',
+        icon: ChildrenIcon as Component,
+        color: 'primary',
         emphasis: true,
     },
 ]
@@ -68,12 +71,12 @@ const statCards: StatCard[] = [
                     >
                         <v-card
                             class="stat-card pa-6"
-                            :color="card.emphasis ? 'success' : undefined"
+                            :color="card.emphasis ? (card.color ?? 'success') : undefined"
                             :variant="card.emphasis ? 'flat' : 'elevated'"
                             rounded="xl"
                             elevation="2"
                         >
-                            <div class="d-flex flex-column h-100 position-relative">
+                            <div class="d-flex flex-column h-100">
                                 <div :class="['text-subtitle-1 mb-2', card.emphasis ? 'text-white' : 'text-medium-emphasis']">
                                     {{ card.label }}
                                 </div>
@@ -84,13 +87,21 @@ const statCards: StatCard[] = [
 
                                 <v-spacer></v-spacer>
 
-                                <v-icon
-                                    :color="card.emphasis ? 'white' : 'success'"
-                                    size="96"
-                                    class="icon-floater"
-                                >
-                                    {{ card.icon }}
-                                </v-icon>
+                                <div class="icon-floater">
+                                    <v-icon
+                                        v-if="typeof card.icon === 'string'"
+                                        :color="card.emphasis ? 'white' : 'success'"
+                                        size="96"
+                                    >
+                                        {{ card.icon }}
+                                    </v-icon>
+                                    <component
+                                        v-else
+                                        :is="card.icon"
+                                        class="icon-svg"
+                                        :class="card.emphasis ? 'text-white' : 'text-success'"
+                                    />
+                                </div>
                             </div>
                         </v-card>
                     </v-col>
@@ -109,6 +120,7 @@ const statCards: StatCard[] = [
 
 .stat-card {
     min-height: 220px;
+    position: relative;
 }
 
 .icon-floater {
@@ -116,6 +128,11 @@ const statCards: StatCard[] = [
     right: 12px;
     bottom: 12px;
     opacity: 0.9;
+}
+
+.icon-svg {
+    width: 96px;
+    height: 96px;
 }
 </style>
 
