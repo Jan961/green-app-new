@@ -15,9 +15,9 @@
 
         <v-col cols="12" md="6">
           <div class="story-content">
-            <v-btn class="mb-4" variant="outlined" color="green-darken-2" rounded="xl" size="large">
+            <v-chip class="mb-4" variant="outlined" color="green-darken-2" rounded="xl" size="large">
               Our story
-            </v-btn>
+            </v-chip>
 
             <h2 class="story-title mb-4">
               Hello, I am the founder of

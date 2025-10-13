@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import nailAvatar from '@/assets/images/about/testimonials/nail.jpeg'
+import lucianaAvatar from '@/assets/images/about/testimonials/luciana.png'
+import katerinaAvatar from '@/assets/images/about/testimonials/katerina.png'
+import laurieAvatar from '@/assets/images/about/testimonials/laurie.png'
+import lauraAvatar from '@/assets/images/about/testimonials/laura.png'
 
 type Testimonial = {
     id: number
@@ -8,36 +13,56 @@ type Testimonial = {
     author: string
     rating: number
     avatar: string
+    website: string
 }
 
 const testimonials = ref<Testimonial[]>([
     {
         id: 1,
-        title: 'We had an amazing experience here.',
-        body:
-            'We learned so much about harvesting and building a small agriculture farm. The food was delicious and the balance between working and relaxing was perfect. A big shoutout to Miss Green for hosting us and making us feel at home. We feel grateful and wiser.',
-        author: 'Laurie Missiaen',
+        title: 'No better place to learn about permaculture and live like a real Thai farmer.',
+        body:'We had a really good time at the project. The host is a good example of female empowerment and we wish her all the best of luck in creating this little heaven. Everyday we had good and healthy food. As non vegans we learnt a lot about eating meals without meat or chicken. The tasks were very different from each other, which we liked very much :)',
+        author: 'Nail',
         rating: 5,
-        avatar: 'https://i.pravatar.cc/160?img=15',
+        avatar: nailAvatar,
+        website: 'Worldpackers',
     },
     {
         id: 2,
-        title: 'Truly inspiring and peaceful place.',
-        body:
-            'Days were filled with meaningful tasks, evenings with stories and laughter. I learned practical permaculture skills and ate the freshest plant-based meals I have ever had.',
-        author: 'Miguel Santos',
+        title: 'The tastiest plant-based, locally produced, nutritious vegan dishes...',
+        body: 'made from seasonal fruits and vegetables that you will not have the chance of coming across in any restaurant. The most delicious meals packed with nutrients I have tried in Thailand.',
+        author: 'Katerina',
         rating: 5,
-        avatar: 'https://i.pravatar.cc/160?img=32',
+        avatar: katerinaAvatar,
+        website: 'Google',
     },
     {
         id: 3,
-        title: 'Skill-building, community, and nature.',
-        body:
-            'From composting to planting, every activity was hands-on and educational. The hosts were kind and made sure we were comfortable the entire stay.',
-        author: 'Akari Tanaka',
-        rating: 4.8,
-        avatar: 'https://i.pravatar.cc/160?img=5',
+        title: 'We had an amazing experience here.',
+        body: 'We learned so much about harvesting and building a small agri culture farm. The food was delicious and the balance between working and relaxing was perfect. A big shoutout to Miss Green for hosting us and making us feel at home. We feel grateful and wiser.',
+        author: 'Laurie Missiaen',
+        rating: 5,
+        avatar: laurieAvatar,
+        website: 'Google',
     },
+    {
+        id: 4,
+        title: 'A real life experience. I learned so much and food was amazing!',
+        body: 'I will cook Thai and vegan in France now 😁. Thank you Angel for everything you teach …',
+        author: 'Léia Launay',
+        rating: 5,
+        avatar: lauraAvatar,
+        website: 'Google',
+    },
+    {
+        id: 5,
+        title: 'It was a great experience!',
+        body: 'I\'ve learned a lot with Green not just about the farm but also about life. Shes not a woman of many words but with good eyes you can see how much she cares about the nature and her family. ive also learned how to cook in a thai kitchen (wich ive never seen before) but reminded me a lot of my granny and the life they had in the past.',
+        author: 'Luciana Dagostini',
+        rating: 5,
+        avatar: lucianaAvatar,
+        website: 'Google',
+    },
+    
 ])
 
 const active = ref<number>(1)
@@ -101,7 +126,7 @@ function prev() {
                                     readonly
                                 />
                                 <div class="text-caption text-medium-emphasis mt-1">
-                                    {{ Number(t.rating).toFixed(1) }} Google
+                                    {{ Number(t.rating).toFixed(1) }} {{ t.website }}
                                 </div>
                             </v-col>
                         </v-row>
