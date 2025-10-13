@@ -28,7 +28,7 @@ const statCards: StatCard[] = [
         value: '200+',
         icon: 'mdi-leaf',
         details:
-            'Our herbarium now includes more than 200 medicinal and culinary herbs used for education. Lorem ipsum dolor sit amet.',
+            'Our herbarium now includes more than 200 medicinal and culinary herbs used for education. Lorem ipsum dolor sit amet. now includes more than 200 medicinal and culinary herbs used for education',
     },
     {
         id: 3,
@@ -45,7 +45,7 @@ const statCards: StatCard[] = [
         color: 'primary',
         emphasis: true,
         details:
-            'Hands-on classes have engaged dozens of children',
+            'Hands-on classes have engaged dozens of children Dozens of children have participated in our classes jafba kjbsdak js alndl d df f f kas aks a ',
     },
 ]
 
@@ -159,21 +159,17 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
                                     :elevation="2"
                                     :ripple="false"
                                 >
-                                    <div class="d-flex flex-column h-100">
-                                        <div :class="['text-subtitle-1 mb-2 font-weight-medium', card.emphasis ? 'text-primary' : 'text-white']">
-                                            {{ card.label }}
-                                        </div>
+                                    <div class=" h-100">
                                         <div :class="['text-body-1', card.emphasis ? 'text-primary' : 'text-white']">
                                             {{ card.details }}
-                                        </div>
+                                        
 
-                                        <v-spacer></v-spacer>
 
                                         <div class="icon-floater">
                                             <v-icon
                                                 v-if="typeof card.icon === 'string'"
                                                 :color="card.emphasis ? 'primary' : 'white'"
-                                                size="96"
+                                                size="72"
                                             >
                                                 {{ card.icon }}
                                             </v-icon>
@@ -184,6 +180,7 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
                                                 :class="card.emphasis ? 'text-primary' : 'text-white'"
                                             />
                                         </div>
+                                    </div>
                                     </div>
                                 </v-card>
                             </div>
@@ -244,13 +241,26 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
 }
 
 .icon-floater {
-    align-self: flex-end;
+    float: right; /* works on the back face (non-flex container) */
     opacity: 0.9;
+    /* Ensure the container doesn't stretch in flex context (front face) */
+    align-self: flex-end;
+    flex: 0 0 auto;
+    /* Shrink to content size */
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-svg {
     width: 96px;
     height: 96px;
+}
+
+.face-back .icon-svg {
+    width: 72px;
+    height: 72px;
 }
 
 .stat-card :deep(.v-ripple__container),
