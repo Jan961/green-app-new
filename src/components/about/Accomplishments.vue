@@ -265,5 +265,15 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
 .stat-card :deep(.v-ripple__animation) {
     display: none !important;
 }
+
+/* Mobile-only: center the back face content vertically */
+@media (max-width: 600px) {
+    .face-back > .h-100 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+}
 </style>
 
