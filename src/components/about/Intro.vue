@@ -15,18 +15,17 @@
 
         <v-col cols="12" md="6">
           <div class="intro-content">
-            <v-btn
+            <v-chip
               class="intro-cta mb-6"
               variant="outlined"
               rounded="xl"
               size="large"
             >
               Discover Green Garden
-            </v-btn>
+            </v-chip>
 
             <h2 class="intro-title mb-4">
               From Bare Land to a
-              <br />
               Flourishing Ecosystem
             </h2>
 
@@ -54,7 +53,7 @@
 }
 
 .intro-card {
-  background: #43b36b;
+  background: rgba(var(--v-theme-primary), 1);
   padding: clamp(16px, 4vw, 32px);
 }
 

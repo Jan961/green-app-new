@@ -130,7 +130,7 @@ const landingContainerClass = computed(() => ({
 
 /* Make chip surface white while preserving gradient text inside */
 .location-chip {
-  background-color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
   border-color: rgba(var(--v-theme-light-green), 1) !important;
   border-width: 1px !important;
   filter: drop-shadow(var(--elevate-drop)) !important;
@@ -206,7 +206,7 @@ const landingContainerClass = computed(() => ({
 /* Decorative background on the right */
 .landing::after {
   --ax: 80%;   /* anchor X (background-position) */
-  --ay: 100%;  /* anchor Y */
+  --ay: 70%;  /* anchor Y */
 
   background-size: cover; /* preserve aspect ratio and fill */
   background-position: var(--ax) var(--ay);
