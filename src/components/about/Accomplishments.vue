@@ -20,7 +20,7 @@ const statCards: StatCard[] = [
         value: '1,500+',
         icon: 'mdi-sprout',
         details:
-            'We have planted over 1,500 native forest trees to restore biodiversity and improve soil health. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'We have planted over 1,500 native forest trees to restore biodiversity and improve soil health.',
     },
     {
         id: 2,
@@ -45,7 +45,7 @@ const statCards: StatCard[] = [
         color: 'primary',
         emphasis: true,
         details:
-            'Hands-on classes have engaged dozens of children in sustainability and healthy living. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Hands-on classes have engaged dozens of children',
     },
 ]
 
@@ -200,7 +200,7 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
 .accomplishments-section {
     max-width: 1200px;
     margin-inline: auto;
-    --v-hover-opacity: 0;
+    --v-hover-opacity: 0; 
     --v-activated-opacity: 0;
 }
 
@@ -244,9 +244,7 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
 }
 
 .icon-floater {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
+    align-self: flex-end;
     opacity: 0.9;
 }
 

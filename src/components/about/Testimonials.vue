@@ -79,7 +79,7 @@ function prev() {
 </script>
 
 <template>
-    <v-container class="py-12 my-12" height="400px" fluid>
+    <v-container class="py-12 my-12" fluid>
         <v-row align="center" no-gutters>
             <v-col cols="1" class="d-none d-md-flex justify-center">
                 <v-btn icon variant="text" color="success" @click="prev">
@@ -162,7 +162,15 @@ function prev() {
     margin-right: 12px;
 }
 .t-window-fixed-height {
-    /* Adjust this fixed height to accommodate the tallest slide content */
-    min-height: 240px;
+    /* Fixed, responsive height to prevent layout jump across slides */
+    height: 560px; /* mobile default - increased for readability */
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+}
+
+@media (min-width: 960px) {
+    .t-window-fixed-height {
+        height: 360px; /* desktop/tablet */
+    }
 }
 </style>
