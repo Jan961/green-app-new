@@ -8,6 +8,7 @@ const router = createRouter({
     { path: '/volunteer', name: 'volunteer', component: () => import('@/views/VolunteerView.vue') },
     { path: '/contact', name: 'contact', component: () => import('@/views/ContactView.vue') },
     { path: '/donate', name: 'donate', component: () => import('@/views/DonateView.vue') },
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/views/NotFoundView.vue') },
   ],
 })
 
