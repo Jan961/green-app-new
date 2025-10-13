@@ -9,7 +9,7 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
     <v-sheet class="veganism-card" rounded="xl" elevation="0">
       <h2 class="section-title mb-8">Veganism</h2>
 
-      <v-row class="g-6 align-center">
+      <v-row class="align-center row-gap">
         <!-- Row 1: left copy, right 2 images -->
         <v-col cols="12" md="6" class="copy-block pr-md-8">
           <h3 class="text-h6 text-md-h5 font-weight-bold mb-2">
@@ -110,6 +110,10 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
 
 .img-xl {
   height: clamp(260px, 34vw, 400px);
+}
+
+.row-gap {
+  row-gap: clamp(16px, 4vw, 40px);
 }
 </style>
 

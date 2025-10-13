@@ -20,7 +20,7 @@ const statCards: StatCard[] = [
         value: '1,500+',
         icon: 'mdi-sprout',
         details:
-            'We have planted over 1,500 native forest trees to restore biodiversity and improve soil health.',
+            'Neem, moringa, gliricidia, leucaena, sesbania, pigeon pea, albizia/rain tree, cassia siamea, teak, clumping bamboos and many others',
     },
     {
         id: 2,
@@ -28,7 +28,8 @@ const statCards: StatCard[] = [
         value: '200+',
         icon: 'mdi-leaf',
         details:
-            'Our herbarium now includes more than 200 medicinal and culinary herbs used for education. Lorem ipsum dolor sit amet. now includes more than 200 medicinal and culinary herbs used for education',
+        'Lemongrass, Thai basil, holy basil, lemon basil, culantro, rice paddy herb, mint, pandan, ginger, turmeric, fingerroot, and torch ginger'
+
     },
     {
         id: 3,
@@ -36,7 +37,7 @@ const statCards: StatCard[] = [
         value: '2,000+',
         icon: 'mdi-palm-tree',
         details:
-            'Over 2,000 fruit trees support local food security and wildlife habitat. Lorem ipsum dolor sit amet, consectetur.',
+        'Mango, jackfruit, coconut, tamarind, banana, papaya, mangosteen, rambutan, durian, guava, starfruit, lime, pomelo'
     },
     {
         id: 4,
@@ -45,7 +46,7 @@ const statCards: StatCard[] = [
         color: 'primary',
         emphasis: true,
         details:
-            'Hands-on classes have engaged dozens of children Dozens of children have participated in our classes jafba kjbsdak js alndl d df f f kas aks a ',
+            'Kids learn organic farming, healthy living, and practice fun, confidence-building English with volunteers.',
     },
 ]
 
@@ -161,26 +162,23 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
                                 >
                                     <div class=" h-100">
                                         <div :class="['text-body-1', card.emphasis ? 'text-primary' : 'text-white']">
+                                            <div class="icon-floater">
+                                                <v-icon
+                                                    v-if="typeof card.icon === 'string'"
+                                                    :color="card.emphasis ? 'primary' : 'white'"
+                                                    size="72"
+                                                >
+                                                    {{ card.icon }}
+                                                </v-icon>
+                                                <component
+                                                    v-else
+                                                    :is="card.icon"
+                                                    class="icon-svg"
+                                                    :class="card.emphasis ? 'text-primary' : 'text-white'"
+                                                />
+                                            </div>
                                             {{ card.details }}
-                                        
-
-
-                                        <div class="icon-floater">
-                                            <v-icon
-                                                v-if="typeof card.icon === 'string'"
-                                                :color="card.emphasis ? 'primary' : 'white'"
-                                                size="72"
-                                            >
-                                                {{ card.icon }}
-                                            </v-icon>
-                                            <component
-                                                v-else
-                                                :is="card.icon"
-                                                class="icon-svg"
-                                                :class="card.emphasis ? 'text-primary' : 'text-white'"
-                                            />
                                         </div>
-                                    </div>
                                     </div>
                                 </v-card>
                             </div>
