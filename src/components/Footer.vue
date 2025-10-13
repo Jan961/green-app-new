@@ -81,7 +81,7 @@
 <script setup lang="ts">
 type RouteName = 'about' | 'volunteer' | 'donate' | 'contact'
 
-const email = 'Greengarden@gmail.com'
+const email = 'midoriangel1972@gmail.com'
 const phone = '+66 63 794 1656'
 const phoneRaw = '+66637941656'
 
