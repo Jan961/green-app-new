@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="story-section py-12">
     <v-sheet class="story-card px-0" rounded="xl" elevation="0">
-      <v-row class="align-center g-8" no-gutters>
+      <v-row align="center">
 
         <v-col cols="12" md="6">
           <div class="story-content">
@@ -47,9 +47,9 @@
             :src="storyImage"
             alt="Our story"
             class="story-image"
-            height="560"
             cover
             rounded="xl"
+            width="100%"
           />
         </v-col>
       </v-row>
@@ -80,13 +80,8 @@ import storyImage from '@/assets/images/about/our-story/green-pic.png'
 
 .story-title {
   font-weight: 900;
-  letter-spacing: -0.02em;
   line-height: 1.1;
   font-size: clamp(28px, 5.2vw, 48px);
-}
-
-.story-image {
-  width: 100%;
 }
 
 @media (max-width: 959px) {

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="education-section py-12">
-    <v-sheet class="education-card px-0" rounded="xl" elevation="0">
-      <v-row class="align-center">
+    <v-sheet class="education-card px-4" rounded="xl" elevation="0">
+      <v-row class="align-center ga-6">
 
         <v-col cols="12" md="6" >
           <v-img
@@ -16,7 +16,6 @@
 
         <v-col cols="12" md="6" >
           <div class="pr-md-8">
-            <h2 class="section-title mb-4">Education</h2>
 
             <div class="org-header d-flex align-center mb-3">
               <v-avatar size="44" class="mr-3" rounded="lg">

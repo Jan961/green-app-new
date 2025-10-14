@@ -71,7 +71,7 @@ const active = ref<number>(1)
 const total = computed(() => testimonials.value.length)
 
 const { mdAndUp } = useDisplay()
-const windowHeight = computed(() => (mdAndUp.value ? '420px' : '700px'))
+const windowHeight = computed(() => (mdAndUp.value ? '420px' : '760px'))
 
 function next() {
     active.value = active.value >= total.value ? 1 : active.value + 1

@@ -116,11 +116,10 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
                                 <!-- Front Face: matches current look -->
                                 <v-card
                                     class="flip-face face-front pa-6"
-                                    :variant="card.emphasis ? 'flat' : 'elevated'"
+                                    variant="flat"
                                     :color="card.emphasis ? (card.color ?? 'primary') : undefined"
                                     rounded="xl"
                                     :ripple="false"
-                                    :elevation="2"
                                 >
                                     <div class="d-flex flex-column h-100">
                                         <div :class="['text-subtitle-1 mb-2', card.emphasis ? 'text-white' : 'text-medium-emphasis']">
@@ -154,10 +153,9 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
                                 <!-- Back Face: inverted colors and details -->
                                 <v-card
                                     class="flip-face face-back pa-6"
-                                    :variant="card.emphasis ? 'elevated' : 'flat'"
+                                    variant="flat"
                                     :color="card.emphasis ? undefined : 'primary'"
                                     rounded="xl"
-                                    :elevation="2"
                                     :ripple="false"
                                 >
                                     <div class=" h-100">
@@ -228,6 +226,8 @@ function onCardKeydown(event: KeyboardEvent, cardId: number): void {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden; /* clip inner content to rounded corners */
+    /* Subtle 360° shadow, slightly stronger (top and right included) */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 8px rgba(0, 0, 0, 0.06), 8px 0 8px rgba(0, 0, 0, 0.08), 0 -4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .face-front {
