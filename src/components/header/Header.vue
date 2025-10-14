@@ -93,8 +93,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useDisplay } from 'vuetify'
-import SiteLogo from '@/components/icons/SiteLogo.vue'
-import SiteLogoWhite from '@/components/icons/SiteLogoDark.vue'
+import SiteLogo from '@/components/icons/site-logos/SiteLogo.vue'
+import SiteLogoWhite from '@/components/icons/site-logos/SiteLogoDark.vue'
 import HeaderButton from '@/components/buttons/HeaderButton.vue'
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
 const { smAndDown} = useDisplay()
