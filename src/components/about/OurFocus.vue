@@ -155,6 +155,12 @@ const focusItems: FocusItem[] = [
   z-index: 1;
   display: grid;
   gap: 6px;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.focus-card:hover .card-content,
+.focus-card:focus-visible .card-content {
+  transform: translateY(-6px);
 }
 
 .card-title {
@@ -174,15 +180,13 @@ const focusItems: FocusItem[] = [
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(6px);
-  transition: max-height 450ms ease, opacity 300ms ease, transform 350ms ease;
+  transition: max-height 450ms ease, opacity 300ms ease;
 }
 
 .focus-card:hover .card-extra,
 .focus-card:focus-visible .card-extra {
   max-height: 140px;
   opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 959px) {
