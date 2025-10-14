@@ -10,12 +10,13 @@
         sm="6"
         md="3"
       >
-        <v-sheet class="focus-card" rounded="xl" elevation="0">
+        <v-sheet class="focus-card" rounded="xl" elevation="0" tabindex="0">
           <v-img :src="item.image" :alt="item.title" cover class="card-image" />
           <div class="card-overlay">
-            <div>
+            <div class="card-content">
               <div class="card-title">{{ item.title }}</div>
               <div class="card-desc">{{ item.description }}</div>
+              <div class="card-extra">{{ item.details }}</div>
             </div>
           </div>
         </v-sheet>
@@ -34,6 +35,7 @@ type FocusItem = {
   title: string
   description: string
   image: string
+  details: string
 }
 
 const focusItems: FocusItem[] = [
@@ -41,22 +43,30 @@ const focusItems: FocusItem[] = [
     title: 'Chemical-Free Farming',
     description: 'Committed to promoting chemical-free farming.',
     image: chemicalFree,
+    details:
+      'We nurture soil health with natural methods, building biodiversity and resilience.',
   },
   {
     title: 'Vegan Living',
     description: 'Fresh, plant-based meals made from our organic harvest.',
     image: veganLiving,
+    details:
+      'Seasonal menus celebrate local produce while reducing our environmental footprint.',
   },
   {
     title: 'Hands-On Learning',
     description:
       'A supportive educational space for local children and international volunteers.',
     image: education,
+    details:
+      'Workshops blend practice and theory to spark curiosity and lifelong skills.',
   },
   {
     title: 'Food From Garden to Plate',
     description: 'Authentic Thai flavors made entirely plant-based.',
     image: baskets,
+    details:
+      'From harvest to kitchen, every step is thoughtful, simple, and sustainable.',
   },
 ]
 </script>
@@ -78,12 +88,30 @@ const focusItems: FocusItem[] = [
   position: relative;
   overflow: hidden;
   height: 420px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  will-change: transform;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
   display: block;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
+  will-change: transform;
+}
+
+.focus-card:hover,
+.focus-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  outline: 2px solid var(--v-theme-primary);
+  outline-offset: 2px;
+}
+
+.focus-card:hover .card-image,
+.focus-card:focus-visible .card-image {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.05);
 }
 
 .card-overlay {
@@ -98,6 +126,35 @@ const focusItems: FocusItem[] = [
     rgba(0, 0, 0, 0.15) 45%,
     rgba(0, 0, 0, 0) 60%
   );
+  z-index: 1;
+}
+
+.card-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 35%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.focus-card:hover .card-overlay::before,
+.focus-card:focus-visible .card-overlay::before {
+  opacity: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
 }
 
 .card-title {
@@ -108,6 +165,24 @@ const focusItems: FocusItem[] = [
 
 .card-desc {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.card-extra {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 450ms ease, opacity 300ms ease, transform 350ms ease;
+}
+
+.focus-card:hover .card-extra,
+.focus-card:focus-visible .card-extra {
+  max-height: 140px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 959px) {

@@ -33,14 +33,8 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
         </v-col>
 
         <!-- Row 2: left 2 images, right copy -->
-        <v-col cols="12" md="6" class="pr-md-4 order-2 order-md-1">
-          <v-row class="g-4">
-            <v-col cols="12">
-              <v-img :src="turningHarvest" alt="Pesto" class="img-md" rounded="xl" cover />
-            </v-col>
-          </v-row>
-        </v-col>
-        <v-col cols="12" md="6" class="copy-block pl-md-8 order-1 order-md-2">
+        <!-- Mobile-only text (shown above image on mobile) -->
+        <v-col cols="12" class="copy-block pl-md-8 d-md-none">
           <h3 class="text-h6 text-md-h5 font-weight-bold mb-2">
             Turning Harvests into Flavorful Dishes
           </h3>
@@ -51,7 +45,26 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
           </p>
         </v-col>
 
-        <!-- Row 3: left copy, right full image -->
+        <v-col cols="12" md="6" class="pr-md-4">
+          <v-row class="g-4">
+            <v-col cols="12">
+              <v-img :src="turningHarvest" alt="Pesto" class="img-md" rounded="xl" cover />
+            </v-col>
+          </v-row>
+        </v-col>
+        <!-- Desktop text (hidden on mobile) -->
+        <v-col cols="12" md="6" class="copy-block pl-md-8 d-none d-md-flex">
+          <h3 class="text-h6 text-md-h5 font-weight-bold mb-2">
+            Turning Harvests into Flavorful Dishes
+          </h3>
+          <p class="text-body-1 text-medium-emphasis">
+            We take pride in transforming our farm’s harvest into delicious dishes, from our
+            signature moringa pasta to a variety of local Thai vegan meals. Every meal reflects
+            the care and passion we put into plant‑based cooking, from garden to table.
+          </p>
+        </v-col>
+
+
         <v-col cols="12" md="6" class="copy-block pr-md-8">
           <h3 class="text-h6 text-md-h5 font-weight-bold mb-2">
             Learning How to Prepare Meals
