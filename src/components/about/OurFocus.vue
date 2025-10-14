@@ -105,7 +105,7 @@ const focusItems: FocusItem[] = [
   position: relative;
   overflow: hidden;
   height: 420px;
-  transition: transform 1s ease, box-shadow 1s ease;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 1s ease;
   will-change: transform;
 }
 
@@ -172,7 +172,7 @@ const focusItems: FocusItem[] = [
   z-index: 1;
   display: grid;
   gap: 6px;
-  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .focus-card:hover .card-content,
@@ -197,7 +197,7 @@ const focusItems: FocusItem[] = [
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 1.2s ease, opacity 0.2s ease;
+  transition: max-height 1.4s ease, opacity 0.4s ease-in-out;
 }
 
 .focus-card:hover .card-extra,

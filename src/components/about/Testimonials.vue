@@ -165,14 +165,14 @@ function prev() {
 }
 .t-window-fixed-height {
     /* Fixed, responsive height to prevent layout jump across slides */
-    height: 680px; /* mobile only; tightened to reduce gap to dots */
+    height: 700px; /* mobile only; tightened to reduce gap to dots */
     overflow-y: auto;
     scrollbar-gutter: stable both-edges;
 }
 
 @media (min-width: 960px) {
     .t-window-fixed-height {
-        height: 360px; /* desktop/tablet */
+        height: 420px;
     }
 }
 
