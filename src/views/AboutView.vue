@@ -19,19 +19,30 @@ export default {
 }
 </script>
   <template>
-    <Landing />
-    <RevealOnScroll><Organisations /></RevealOnScroll>
-    <RevealOnScroll><Intro /></RevealOnScroll>
-    <RevealOnScroll><OurFocus /></RevealOnScroll>
-    <RevealOnScroll><Testimonials /></RevealOnScroll>
-    <RevealOnScroll><Accomplishments /></RevealOnScroll>
-    <RevealOnScroll><Veganism /></RevealOnScroll>
-    <RevealOnScroll><Education /></RevealOnScroll>
-    <RevealOnScroll><OurStory /></RevealOnScroll>
-    <RevealOnScroll><OurTeam /></RevealOnScroll>
-    <RevealOnScroll><Contact /></RevealOnScroll>
-</template>
+    <div class="about-view-wide">
+      <Landing />
+      <RevealOnScroll><Organisations /></RevealOnScroll>
+      <RevealOnScroll><Intro /></RevealOnScroll>
+      <RevealOnScroll><OurFocus /></RevealOnScroll>
+      <RevealOnScroll><Testimonials /></RevealOnScroll>
+      <RevealOnScroll><Accomplishments /></RevealOnScroll>
+      <RevealOnScroll><Veganism /></RevealOnScroll>
+      <RevealOnScroll><Education /></RevealOnScroll>
+      <RevealOnScroll><OurStory /></RevealOnScroll>
+      <RevealOnScroll><OurTeam /></RevealOnScroll>
+      <RevealOnScroll><Contact /></RevealOnScroll>
+    </div>
+
+  </template>
 
 <style scoped>
+/* Expand section widths and trim side paddings only within About view */
+.about-view-wide :deep(.v-container:not(.v-container--fluid)) {
+  max-width: min(var(--page-max-width), 100%) !important;
+}
 
+.about-view-wide :deep(.v-container) {
+  padding-left: var(--page-gutter-x);
+  padding-right: var(--page-gutter-x);
+}
 </style>

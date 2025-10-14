@@ -1,6 +1,6 @@
 <template>
-  <v-container class="education-section py-12">
-    <v-sheet class="education-card" rounded="xl" elevation="0">
+  <v-container fluid class="education-section py-12">
+    <v-sheet class="education-card px-0" rounded="xl" elevation="0">
       <v-row class="align-center">
 
         <v-col cols="12" md="6" >
@@ -50,8 +50,10 @@ const orgLogo = educationImage
 
 <style scoped>
 .education-section {
-  max-width: 1200px;
+  max-width: min(var(--page-max-width), 100%);
   margin-inline: auto;
+  padding-left: var(--page-gutter-x);
+  padding-right: var(--page-gutter-x);
 }
 
 .education-card {

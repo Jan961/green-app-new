@@ -1,6 +1,6 @@
 <template>
-  <v-container class="story-section py-12">
-    <v-sheet class="story-card" rounded="xl" elevation="0">
+  <v-container fluid class="story-section py-12">
+    <v-sheet class="story-card px-0" rounded="xl" elevation="0">
       <v-row class="align-center g-8" no-gutters>
 
         <v-col cols="12" md="6">
@@ -63,8 +63,10 @@ import storyImage from '@/assets/images/about/our-story/green-pic.png'
 
 <style scoped>
 .story-section {
-  max-width: 1200px;
+  max-width: min(var(--page-max-width), 100%);
   margin-inline: auto;
+  padding-left: var(--page-gutter-x);
+  padding-right: var(--page-gutter-x);
 }
 
 .story-card {

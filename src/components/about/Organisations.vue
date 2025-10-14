@@ -1,7 +1,7 @@
 <template>
-    <v-container class="organisations-section py-12">
-        <div :class="['d-flex align-center', smAndDown ? 'flex-column ga-8' : 'flex-row ga-12 justify-space-evenly']">
-            <div class="d-flex align-center ga-6">
+    <v-container fluid class="organisations-section py-12">
+        <div :class="['d-flex align-center', smAndDown ? 'flex-column ga-8' : 'w-100 flex-row ga-12 justify-start organisations-row']">
+            <div class="d-flex align-center ga-6 org-stats">
                 <v-img
                     src="@/assets/icons/heart.svg"
                     alt="Heart"
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div :class="['d-flex', smAndDown ? 'flex-column align-start ga-4' : 'flex-row align-center ga-8']">
+            <div :class="['d-flex brands', smAndDown ? 'flex-column align-start ga-6' : 'flex-row align-center ga-12']">
                 <a class="brand-link d-inline-flex align-center" href="https://wwoofindependents.org/" target="_blank" rel="noopener noreferrer" aria-label="WWOOF">
                     <v-icon icon="$wwoofLogo" :size="brandSize" class="brand-logo" />
                 </a>
@@ -37,19 +37,34 @@
 import { computed } from 'vue'
 import { useDisplay } from 'vuetify'
 
-const { smAndDown, mdAndDown, lgAndDown } = useDisplay()
+const { smAndDown, mdAndDown, lgAndDown, xlAndUp } = useDisplay()
 
 const brandSize = computed(() => {
-    if (smAndDown.value) return 120
-    if (mdAndDown.value) return 140
-    if (lgAndDown.value) return 160
-    return 200
+    if (smAndDown.value) return 160
+    if (mdAndDown.value) return 188
+    if (lgAndDown.value) return 212
+    if (xlAndUp.value) return 236
+    return 212
 })
 </script>
 <style scoped>
 .organisations-section {
     padding-top: 48px;
     padding-bottom: 48px;
+    max-width: min(var(--page-max-width), 100%);
+    margin-inline: auto;
+    padding-left: var(--page-gutter-x);
+    padding-right: var(--page-gutter-x);
+}
+.organisations-row {
+    column-gap: clamp(24px, 6vw, 80px);
+}
+.org-stats {
+    min-width: 320px;
+}
+.brands {
+    flex: 1 1 auto;
+    justify-content: flex-start;
 }
 .brand-link {
     text-decoration: none;
@@ -63,7 +78,7 @@ const brandSize = computed(() => {
 }
 
 .brand-logo {
-    opacity: 0.7;
+    opacity: 0.8;
     color: grey;
     transform-origin: center;
     transition: transform 0.6s ease, color 0.6s ease, opacity 0.6s ease;

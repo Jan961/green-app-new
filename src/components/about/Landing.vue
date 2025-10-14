@@ -1,5 +1,5 @@
 <template>
-    <v-container :class="[ landingContainerClass, 'py-10']">
+    <v-container fluid :class="[ landingContainerClass, 'py-10']">
       <v-row align="start" justify="space-between" :class="{'pt-6': !smAndDown}" >
         <v-col cols="12" md="6" class="pe-6">
           <v-chip
@@ -145,7 +145,7 @@ const landingContainerClass = computed(() => ({
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(36px, 5.4vw, 56px);
 }
 
 .nowrap {
@@ -153,7 +153,7 @@ const landingContainerClass = computed(() => ({
 }
 
 .lead {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.68);
 }
 
@@ -201,6 +201,12 @@ const landingContainerClass = computed(() => ({
 
 :where(.landing, .landing-mobile) :where(.v-btn, .v-chip, .video-frame, .v-sheet) {
   box-shadow: var(--elevate-stroke);
+}
+
+/* Reduce horizontal padding so the hero can breathe across the page */
+:where(.landing, .landing-mobile) {
+  padding-left: clamp(12px, 4vw, 32px);
+  padding-right: clamp(12px, 4vw, 32px);
 }
 
 /* Decorative background on the right */

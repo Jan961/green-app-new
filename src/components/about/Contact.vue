@@ -29,7 +29,7 @@ const whatsAppUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(d
 
 const ctaStyle = {
   backgroundImage: 
-  `
+  `url(${bgGradient}),
    linear-gradient(90deg, rgba(172, 231, 110, 0.85), 
    rgba(47, 196, 108, 0.92))`,
   backgroundSize: 'cover',
@@ -90,4 +90,3 @@ const ctaStyle = {
 </style>
 
 
-<!-- url(${bgGradient}), -->

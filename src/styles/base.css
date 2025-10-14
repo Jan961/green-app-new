@@ -73,3 +73,9 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+/* Global layout variables to ensure consistent desktop widths/gutters */
+:root {
+  --page-max-width: 1440px; /* unified content cap */
+  --page-gutter-x: 24px;    /* horizontal page gutter */
+}
+

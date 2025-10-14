@@ -5,8 +5,8 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
 </script>
 
 <template>
-  <v-container class="veganism-section py-12">
-    <v-sheet class="veganism-card" rounded="xl" elevation="0">
+  <v-container fluid class="veganism-section py-12">
+    <v-sheet class="veganism-card px-0" rounded="xl" elevation="0">
       <h2 class="section-title mb-8">Veganism</h2>
 
       <v-row class="align-center row-gap">
@@ -85,8 +85,10 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
 
 <style scoped>
 .veganism-section {
-  max-width: 1200px;
+  max-width: min(var(--page-max-width), 100%);
   margin-inline: auto;
+  padding-left: var(--page-gutter-x);
+  padding-right: var(--page-gutter-x);
 }
 
 .veganism-card {
