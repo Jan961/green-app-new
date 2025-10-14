@@ -174,13 +174,13 @@ const focusItems: FocusItem[] = [
 }
 
 .card-extra {
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: inherit;
   line-height: 1.35;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 1s ease, opacity 1s ease;
+  transition: max-height 1.2s ease, opacity 0.2s ease;
 }
 
 .focus-card:hover .card-extra,

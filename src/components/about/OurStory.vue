@@ -2,16 +2,6 @@
   <v-container class="story-section py-12">
     <v-sheet class="story-card" rounded="xl" elevation="1">
       <v-row class="align-center g-8" no-gutters>
-        <v-col cols="12" md="6">
-          <v-img
-            :src="storyImage"
-            alt="Our story"
-            class="story-image"
-            height="560"
-            cover
-            rounded="xl"
-          />
-        </v-col>
 
         <v-col cols="12" md="6">
           <div class="story-content">
@@ -50,6 +40,17 @@
               View work experience
             </v-btn>
           </div>
+        </v-col>
+
+        <v-col cols="12" md="6">
+          <v-img
+            :src="storyImage"
+            alt="Our story"
+            class="story-image"
+            height="560"
+            cover
+            rounded="xl"
+          />
         </v-col>
       </v-row>
     </v-sheet>

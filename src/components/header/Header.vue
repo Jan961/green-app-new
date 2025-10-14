@@ -36,30 +36,30 @@
         class="mobile-menu-sheet"
         elevation="0"
         rounded="xl"
-        :style="{ backdropFilter: 'blur(12px) saturate(110%)', WebkitBackdropFilter: 'blur(12px) saturate(110%)', backgroundColor: 'rgba(255,255,255,0.10)' }"
       >
         <v-divider color="primary" length="88%" thickness="1" class="mobile-menu-divider" style="opacity: 0.6" />
         <div class="menu-items-top-wrapper">
-          <v-list class="mobile-menu-list pt-6" density="comfortable" nav lines="one" :ripple="false">
-            <v-list-item to="/about" title="About" prepend-icon="mdi-information-outline" rounded="xl" @click="isMobileMenuOpen = false" />
-            <v-list-item to="/volunteer" title="Volunteer" prepend-icon="mdi-hand-heart-outline" rounded="xl" @click="isMobileMenuOpen = false" />
-            <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" rounded="xl" @click="isMobileMenuOpen = false" />
-          </v-list>
-          <div class="mobile-menu-cta">
-            <v-btn
-              to="/donate"
-              color="primary"
-              size="x-large"
-              density="default"
-              rounded="xl"
-              block
-              style="box-shadow: 0 10px 26px rgba(47, 196, 108, 0.20)"
-              @click="isMobileMenuOpen = false"
-            >
-              Donate
-            </v-btn>
-          </div>
+        <v-list class="mobile-menu-list pt-6" density="comfortable" nav lines="one" :ripple="false">
+          <v-list-item to="/about" title="About" prepend-icon="mdi-information-outline" rounded="xl" @click="isMobileMenuOpen = false" />
+          <v-list-item to="/volunteer" title="Volunteer" prepend-icon="mdi-hand-heart-outline" rounded="xl" @click="isMobileMenuOpen = false" />
+          <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" rounded="xl" @click="isMobileMenuOpen = false" />
+        </v-list>
+      </div>
+        <div class="mobile-menu-cta">
+          <v-btn
+            to="/donate"
+            color="primary"
+            size="x-large"
+            density="default"
+            rounded="xl"
+            block
+            style="box-shadow: 0 10px 26px rgba(47, 196, 108, 0.20)"
+            @click="isMobileMenuOpen = false"
+          >
+            Donate
+          </v-btn>
         </div>
+
       </v-sheet>
     </v-overlay>
 
@@ -80,8 +80,9 @@
 
       <HeaderButton to="/about" >About</HeaderButton>
       <HeaderButton to="/volunteer">Volunteer</HeaderButton>
-        <HeaderButton to="/contact" >Contact</HeaderButton>
-        <PrimaryButton to="/donate" class="me-5" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
+      <HeaderButton to="/contact" >Contact</HeaderButton>
+      <PrimaryButton to="/donate" class="me-5" width="var(--v-navbar-button-width)">Donate</PrimaryButton>
+
     </v-app-bar>
 
    
@@ -173,6 +174,15 @@ const mobileAppBarClasses = computed(() => ({
 }
 .mobile-menu-list {
   background-color: transparent;
+}
+
+.menu-items-top-wrapper {
+  /* apply blur only to the top menu items container */
+  backdrop-filter: saturate(110%) blur(12px);
+  -webkit-backdrop-filter: saturate(110%) blur(12px);
+  background-color: rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  margin: 12px 12px 8px;
 }
 
 .mobile-menu-list :deep(.v-list-item-title) {

@@ -1,8 +1,20 @@
 <template>
   <v-container class="education-section py-12">
-    <v-sheet class="education-card" rounded="xl" elevation="1">
-      <v-row class="align-center g-8" no-gutters>
-        <v-col cols="12" md="6" order="1" order-md="1">
+    <v-sheet class="education-card" rounded="xl" elevation="0">
+      <v-row class="align-center ga-3" no-gutters>
+
+        <v-col cols="12" md="6" >
+          <v-img
+            :src="educationPhoto"
+            alt="Green World Education Foundation"
+            height="420"
+            cover
+            rounded="xl"
+          />
+        </v-col>
+
+
+        <v-col cols="12" md="6" >
           <div class="pr-md-8">
             <h2 class="section-title mb-4">Education</h2>
 
@@ -23,15 +35,7 @@
           </div>
         </v-col>
 
-        <v-col cols="12" md="6" order="2" order-md="2">
-          <v-img
-            :src="educationPhoto"
-            alt="Green World Education Foundation"
-            height="420"
-            cover
-            rounded="xl"
-          />
-        </v-col>
+
       </v-row>
     </v-sheet>
   </v-container>
@@ -51,7 +55,6 @@ const orgLogo = educationImage
 }
 
 .education-card {
-  background: #f7fbf5;
   padding: clamp(16px, 4vw, 28px);
 }
 
