@@ -136,7 +136,7 @@ function prev() {
                     </v-window>
                 </div>
 
-                <div class="d-flex justify-center mt-6">
+                <div class="d-flex justify-center mt-4 mt-md-6">
                     <v-btn
                         v-for="t in testimonials"
                         :key="t.id"
@@ -165,7 +165,7 @@ function prev() {
 }
 .t-window-fixed-height {
     /* Fixed, responsive height to prevent layout jump across slides */
-    height: 560px; /* mobile default - increased for readability */
+    height: 680px; /* mobile only; tightened to reduce gap to dots */
     overflow-y: auto;
     scrollbar-gutter: stable both-edges;
 }
