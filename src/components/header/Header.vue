@@ -30,16 +30,33 @@
       :z-index="900"
       @click:outside="isMobileMenuOpen = false"
       transition="fade-transition"
+      scrim="rgba(0, 0, 0, 0.18)"
     >
-      <v-sheet class="mobile-menu-sheet" elevation="0">
-        <v-divider color="primary" length="90%" thickness="3" class="mobile-menu-divider"/>
-        <v-list class="mobile-menu-list pt-3" density="comfortable" nav>
+      <v-sheet
+        class="mobile-menu-sheet"
+        elevation="0"
+        rounded="xl"
+        :style="{ backdropFilter: 'blur(12px) saturate(110%)', WebkitBackdropFilter: 'blur(12px) saturate(110%)', backgroundColor: 'rgba(255,255,255,0.10)' }"
+      >
+        <v-divider color="primary" length="88%" thickness="1" class="mobile-menu-divider" style="opacity: 0.6" />
+        <v-list class="mobile-menu-list pt-6" density="comfortable" nav lines="one" :ripple="false">
           <v-list-item to="/about" title="About" prepend-icon="mdi-information-outline" rounded="xl" @click="isMobileMenuOpen = false" />
           <v-list-item to="/volunteer" title="Volunteer" prepend-icon="mdi-hand-heart-outline" rounded="xl" @click="isMobileMenuOpen = false" />
           <v-list-item to="/contact" title="Contact" prepend-icon="mdi-email-outline" rounded="xl" @click="isMobileMenuOpen = false" />
         </v-list>
         <div class="mobile-menu-cta">
-          <v-btn to="/donate" color="primary" size="large" rounded="xl" block @click="isMobileMenuOpen = false">Donate</v-btn>
+          <v-btn
+            to="/donate"
+            color="primary"
+            size="x-large"
+            density="default"
+            rounded="xl"
+            block
+            style="box-shadow: 0 10px 26px rgba(47, 196, 108, 0.20)"
+            @click="isMobileMenuOpen = false"
+          >
+            Donate
+          </v-btn>
         </div>
       </v-sheet>
     </v-overlay>

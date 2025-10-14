@@ -66,7 +66,7 @@ const brandSize = computed(() => {
     opacity: 0.7;
     color: grey;
     transform-origin: center;
-    transition: transform 0.2s ease, color 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.6s ease, color 0.6s ease, opacity 0.6s ease;
     will-change: transform;
 }
 .brand-logo:hover {
