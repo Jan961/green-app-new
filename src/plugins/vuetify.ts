@@ -28,7 +28,7 @@ const lightTheme: ThemeDefinition = {
   },
   variables: {
     // navbar
-    'navbar-height-desktop': '72px',
+    'navbar-height-desktop': '90px',
     'navbar-height-mobile': '64px',
     'navbar-button-width': '160px',
 
