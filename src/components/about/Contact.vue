@@ -29,7 +29,7 @@ const whatsAppUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(d
 
 const ctaStyle = {
   backgroundImage: 
-  `url(${bgGradient}),
+  `
    linear-gradient(90deg, rgba(172, 231, 110, 0.85), 
    rgba(47, 196, 108, 0.92))`,
   backgroundSize: 'cover',
@@ -44,10 +44,26 @@ const ctaStyle = {
 }
 
 .cta-sheet {
+  position: relative;
+  overflow: hidden;
   padding: clamp(28px, 6vw, 56px) 10px clamp(28px, 6vw, 56px) 10px;
 }
 
+.cta-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 24px 36px rgba(0, 0, 0, 0.10),
+    inset 0 -16px 28px rgba(0, 0, 0, 0.08);
+}
+
 .cta-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,3 +90,4 @@ const ctaStyle = {
 </style>
 
 
+<!-- url(${bgGradient}), -->
