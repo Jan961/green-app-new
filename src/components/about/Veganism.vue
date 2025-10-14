@@ -33,14 +33,14 @@ import learnCooking from '@/assets/images/about/vegan/learn-cooking-img.png'
         </v-col>
 
         <!-- Row 2: left 2 images, right copy -->
-        <v-col cols="12" md="6" class="pr-md-4">
+        <v-col cols="12" md="6" class="pr-md-4 order-2 order-md-1">
           <v-row class="g-4">
             <v-col cols="12">
               <v-img :src="turningHarvest" alt="Pesto" class="img-md" rounded="xl" cover />
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="12" md="6" class="copy-block pl-md-8">
+        <v-col cols="12" md="6" class="copy-block pl-md-8 order-1 order-md-2">
           <h3 class="text-h6 text-md-h5 font-weight-bold mb-2">
             Turning Harvests into Flavorful Dishes
           </h3>
