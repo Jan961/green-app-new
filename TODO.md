@@ -11,3 +11,4 @@ Quick adjustements before starting other pages - so chat gpt has good examples:
 
 
 - udpate  landing gradient, shadows for buttons everywhere etc
+- change the padding of testimonials

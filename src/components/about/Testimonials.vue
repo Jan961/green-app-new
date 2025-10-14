@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useDisplay } from 'vuetify'
 import nailAvatar from '@/assets/images/about/testimonials/nail.jpeg'
 import lucianaAvatar from '@/assets/images/about/testimonials/luciana.png'
 import katerinaAvatar from '@/assets/images/about/testimonials/katerina.png'
@@ -69,6 +70,9 @@ const active = ref<number>(1)
 
 const total = computed(() => testimonials.value.length)
 
+const { mdAndUp } = useDisplay()
+const windowHeight = computed(() => (mdAndUp.value ? '420px' : '700px'))
+
 function next() {
     active.value = active.value >= total.value ? 1 : active.value + 1
 }
@@ -88,7 +92,7 @@ function prev() {
             </v-col>
 
             <v-col cols="12" md="10">
-                <div class="t-window-fixed-height">
+                <div class="t-window-fixed-height" :style="{ height: windowHeight }">
                     <v-window v-model="active" :touch="{ left: next, right: prev }" continuous>
                     <v-window-item
                         v-for="t in testimonials"
@@ -165,15 +169,8 @@ function prev() {
 }
 .t-window-fixed-height {
     /* Fixed, responsive height to prevent layout jump across slides */
-    height: 700px; /* mobile only; tightened to reduce gap to dots */
     overflow-y: auto;
     scrollbar-gutter: stable both-edges;
-}
-
-@media (min-width: 960px) {
-    .t-window-fixed-height {
-        height: 420px;
-    }
 }
 
 .testimonial-card {
