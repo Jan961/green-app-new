@@ -1,7 +1,7 @@
 <template>
   <v-container class="education-section py-12">
     <v-sheet class="education-card" rounded="xl" elevation="0">
-      <v-row class="align-center ga-3" no-gutters>
+      <v-row class="align-center">
 
         <v-col cols="12" md="6" >
           <v-img
@@ -39,7 +39,7 @@
       </v-row>
     </v-sheet>
   </v-container>
-</template>w
+</template>
 
 <script setup lang="ts">
 import educationImage from '@/assets/icons/green-world-education.svg'
@@ -68,6 +68,12 @@ const orgLogo = educationImage
 @media (max-width: 959px) {
   .education-card .v-row {
     gap: 16px;
+  }
+}
+
+@media (min-width: 960px) {
+  .education-card .v-row {
+    flex-wrap: nowrap; /* keep image and text on one row on desktop */
   }
 }
 </style>

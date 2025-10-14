@@ -94,11 +94,13 @@ function prev() {
                         v-for="t in testimonials"
                         :key="t.id"
                         :value="t.id"
+                        class="testimonial-card pa-10"
+
                     >
                         <v-row align="center" justify="center">
                             <v-col cols="12" md="8">
                                 <div class="d-flex align-center mb-4">
-                                    <v-icon color="success" size="48" class="mr-3">
+                                    <v-icon color="primary" size="48" class="mr-3">
                                         mdi-format-quote-open
                                     </v-icon>
                                     <div class="text-h5 text-md-h3 font-weight-bold">
@@ -172,5 +174,10 @@ function prev() {
     .t-window-fixed-height {
         height: 360px; /* desktop/tablet */
     }
+}
+
+.testimonial-card {
+    border: 1px solid rgba(var(--v-theme-primary), 0.3);
+    border-radius: 32px;
 }
 </style>

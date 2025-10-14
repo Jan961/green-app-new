@@ -4,13 +4,24 @@
 
     <v-row class="g-6">
       <v-col
-        v-for="item in focusItems"
+        v-for="(item, idx) in focusItems"
         :key="item.title"
         cols="12"
         sm="6"
         md="3"
       >
-        <v-sheet class="focus-card" rounded="xl" elevation="0" tabindex="0">
+        <v-sheet
+          class="focus-card"
+          :class="{ 'is-active': activeIndex === idx }"
+          rounded="xl"
+          elevation="0"
+          tabindex="0"
+          role="button"
+          :aria-pressed="activeIndex === idx"
+          @click="toggleActive(idx)"
+          @keyup.enter="toggleActive(idx)"
+          @keyup.space.prevent="toggleActive(idx)"
+        >
           <v-img :src="item.image" :alt="item.title" cover class="card-image" />
           <div class="card-overlay">
             <div class="card-content">
@@ -26,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import chemicalFree from '@/assets/images/about/focus-summary/chemical-free.jpg'
 import veganLiving from '@/assets/images/about/focus-summary/positiveChange.png'
 import education from '@/assets/images/about/focus-summary/education-focus.jpg'
@@ -36,6 +48,11 @@ type FocusItem = {
   description: string
   image: string
   details: string
+}
+
+const activeIndex = ref<number | null>(null)
+const toggleActive = (idx: number): void => {
+  activeIndex.value = activeIndex.value === idx ? null : idx
 }
 
 const focusItems: FocusItem[] = [
@@ -187,6 +204,30 @@ const focusItems: FocusItem[] = [
 .focus-card:focus-visible .card-extra {
   max-height: 140px;
   opacity: 1;
+}
+
+/* Tap-to-activate on touch devices (mirrors hover/focus styles) */
+@media (hover: none) {
+  .focus-card.is-active {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+    outline: 2px solid var(--v-theme-primary);
+    outline-offset: 2px;
+  }
+  .focus-card.is-active .card-image {
+    transform: scale(1.06);
+    filter: saturate(1.05) contrast(1.05);
+  }
+  .focus-card.is-active .card-overlay::before {
+    opacity: 1;
+  }
+  .focus-card.is-active .card-content {
+    transform: translateY(-6px);
+  }
+  .focus-card.is-active .card-extra {
+    max-height: 140px;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 959px) {

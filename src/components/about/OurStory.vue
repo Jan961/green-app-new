@@ -1,6 +1,6 @@
 <template>
   <v-container class="story-section py-12">
-    <v-sheet class="story-card" rounded="xl" elevation="1">
+    <v-sheet class="story-card" rounded="xl" elevation="0">
       <v-row class="align-center g-8" no-gutters>
 
         <v-col cols="12" md="6">
@@ -36,7 +36,7 @@
               </p>
             </div>
 
-            <v-btn color="green-darken-2" rounded="xl" size="large">
+            <v-btn color="primary" rounded="xl" size="large">
               View work experience
             </v-btn>
           </div>
