@@ -22,13 +22,13 @@
                 </div>
            
                 <div :class="['d-flex align-center', smAndDown ? 'flex-column ga-0' : 'flex-row ga-12']">
-                    <v-btn :ripple="false" :to="'https://wwoofindependents.org/ '"  variant="plain" size="200"  >
+                    <v-btn :ripple="false" href="https://wwoofindependents.org/" target="_blank" rel="noopener noreferrer" variant="plain" size="200">
                         <v-icon icon="$wwoofLogo" size="200" class="brand-logo" />
                     </v-btn>
-                    <v-btn :ripple="false" :to="'https://www.worldpackers.com/positions/76186'" variant="plain" size="200" >
+                    <v-btn :ripple="false" href="https://www.worldpackers.com/positions/76186" target="_blank" rel="noopener noreferrer" variant="plain" size="200">
                         <v-icon icon="$worldpackersLogo" size="200" class="brand-logo" />
                     </v-btn>
-                    <v-btn :ripple="false" :to="'https://www.helpx.net/host/1486281OQ'" variant="plain" size="200" >
+                    <v-btn :ripple="false" href="https://www.helpx.net/host/1486281OQ" target="_blank" rel="noopener noreferrer" variant="plain" size="200">
                         <v-icon icon="$helpxLogo" size="200" class="brand-logo" />
                     </v-btn>
                 </div>

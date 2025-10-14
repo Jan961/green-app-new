@@ -10,19 +10,20 @@
         sm="6"
         md="3"
       >
-        <v-sheet class="member-card" rounded="xl" elevation="0">
-          <v-img
-            :src="member.image"
-            :alt="member.name"
-            class="member-image"
-            cover
-            height="420"
-            rounded="xl"
-          />
-
-          <div class="member-meta">
-            <div class="member-name">{{ member.name }}</div>
-            <div class="member-role">{{ member.role }}</div>
+        <v-sheet class="member-card" rounded="xl" elevation="1">
+          <div class="media-wrapper">
+            <v-img
+              :src="member.image"
+              :alt="member.name"
+              class="member-image"
+              cover
+              height="420"
+              rounded="xl"
+            />
+            <div class="member-overlay">
+              <div class="member-name">{{ member.name }}</div>
+              <div class="member-role">{{ member.role }}</div>
+            </div>
           </div>
         </v-sheet>
       </v-col>
@@ -86,10 +87,11 @@ const members: TeamMember[] = [
 
 .member-image {
   width: 100%;
+  transition: transform 500ms ease;
 }
 
 .member-meta {
-  padding-top: 16px;
+  display: none; /* replaced by overlay */
 }
 
 .member-name {
@@ -99,6 +101,40 @@ const members: TeamMember[] = [
 
 .member-role {
   color: rgba(0, 0, 0, 0.6);
+}
+
+/* New overlay presentation */
+.media-wrapper {
+  position: relative;
+}
+
+.member-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.member-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  color: #fff;
+}
+
+.member-overlay .member-name {
+  font-weight: 800;
+}
+
+.member-overlay .member-role {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.member-card:hover .member-image,
+.member-card:focus-within .member-image {
+  transform: scale(1.03);
 }
 </style>
 
