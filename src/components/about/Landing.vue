@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid :class="[ landingContainerClass, 'py-10']">
+    <v-container fluid :class="[ landingContainerClass, 'py-10 px-16']">
       <v-row align="start" justify="space-between" :class="{'pt-6': !smAndDown}" >
         <v-col cols="12" md="6" class="pe-6">
           <v-chip
@@ -103,6 +103,8 @@ const landingContainerClass = computed(() => ({
   position: relative;
   overflow: hidden; /* clip decorative bg */
   z-index: 0; /* establish stacking context so ::after can sit behind */
+  padding-left: clamp(24px, 6vw, 96px);
+  padding-right: clamp(24px, 6vw, 96px);
 }
 
 /*  mobile */

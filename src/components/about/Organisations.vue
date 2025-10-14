@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div :class="['d-flex brands', smAndDown ? 'flex-column align-start ga-6' : 'flex-row align-center ga-12']">
+            <div :class="['d-flex brands justify-space-evenly', smAndDown ? 'flex-column align-start ga-6' : 'flex-row align-center ga-12']">
                 <a class="brand-link d-inline-flex align-center" href="https://wwoofindependents.org/" target="_blank" rel="noopener noreferrer" aria-label="WWOOF">
                     <v-icon icon="$wwoofLogo" :size="brandSize" class="brand-logo" />
                 </a>
@@ -40,11 +40,8 @@ import { useDisplay } from 'vuetify'
 const { smAndDown, mdAndDown, lgAndDown, xlAndUp } = useDisplay()
 
 const brandSize = computed(() => {
-    if (smAndDown.value) return 160
-    if (mdAndDown.value) return 188
-    if (lgAndDown.value) return 212
-    if (xlAndUp.value) return 236
-    return 212
+    if (smAndDown.value) return 200
+    return 260
 })
 </script>
 <style scoped>
@@ -64,7 +61,6 @@ const brandSize = computed(() => {
 }
 .brands {
     flex: 1 1 auto;
-    justify-content: flex-start;
 }
 .brand-link {
     text-decoration: none;
