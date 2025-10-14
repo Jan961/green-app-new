@@ -71,7 +71,7 @@ const active = ref<number>(1)
 const total = computed(() => testimonials.value.length)
 
 const { mdAndUp } = useDisplay()
-const windowHeight = computed(() => (mdAndUp.value ? '420px' : '760px'))
+const windowHeight = computed(() => (mdAndUp.value ? '380px' : '760px'))
 
 function next() {
     active.value = active.value >= total.value ? 1 : active.value + 1
@@ -83,7 +83,7 @@ function prev() {
 </script>
 
 <template>
-    <v-container class="py-12 my-12" fluid>
+    <v-container class="py-12 my-12 top-container-testimonials"  fluid>
         <v-row align="center" no-gutters>
             <v-col cols="1" class="d-none d-md-flex justify-center">
                 <v-btn icon variant="text" color="success" @click="prev">
@@ -92,13 +92,13 @@ function prev() {
             </v-col>
 
             <v-col cols="12" md="10">
-                <div class="t-window-fixed-height" :style="{ height: windowHeight }">
+                <div  :style="{ height: windowHeight }">
                     <v-window v-model="active" :touch="{ left: next, right: prev }" continuous>
                     <v-window-item
                         v-for="t in testimonials"
                         :key="t.id"
                         :value="t.id"
-                        class="testimonial-card pa-10"
+                        class="testimonial-card px-3 py-16"
 
                     >
                         <v-row align="center" justify="center">
@@ -167,14 +167,16 @@ function prev() {
 .mr-3 {
     margin-right: 12px;
 }
-.t-window-fixed-height {
-    /* Fixed, responsive height to prevent layout jump across slides */
-    overflow-y: auto;
-    scrollbar-gutter: stable both-edges;
-}
+
 
 .testimonial-card {
     border: 1px solid rgba(var(--v-theme-primary), 0.3);
     border-radius: 32px;
+}
+
+.top-container-testimonials {
+    padding-left: 160px;
+    padding-right: 160px;
+
 }
 </style>

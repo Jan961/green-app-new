@@ -41,7 +41,7 @@ export default {
   max-width: min(var(--page-max-width), 100%) !important;
 }
 
-.about-view-wide :deep(.v-container):not(.landing) {
+.about-view-wide :deep(.v-container):not(.landing):not(.top-container-testimonials) {
   padding-left: var(--page-gutter-x);
   padding-right: var(--page-gutter-x);
 }
