@@ -99,3 +99,6 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Github actions etc
+.github/

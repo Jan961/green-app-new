@@ -4,11 +4,7 @@
       <div class="footer-grid">
         <div class="brand-block">
           <div class="brand-row">
-            <v-icon icon="mdi-leaf" color="success" size="40" class="me-3" />
-            <div class="brand-name">
-              <span class="brand-line">Green</span>
-              <span class="brand-line">Angel</span>
-            </div>
+            <v-icon :icon="SiteLogoColourVariable" size="80" class="me-3" />
           </div>
           <div class="brand-tagline text-grey-darken-1">Garden Food Forest Buriram</div>
         </div>
@@ -79,6 +75,8 @@
   </template>
 
 <script setup lang="ts">
+import SiteLogoColourVariable from './icons/site-logos/SiteLogoColourVariable.vue'
+
 type RouteName = 'about' | 'volunteer' | 'donate' | 'contact'
 
 const email = 'midoriangel1972@gmail.com'
@@ -133,7 +131,7 @@ const social = [
   margin-bottom: 8px;
 }
 
-.brand-row { display: flex; align-items: center; }
+.brand-row { display: flex; align-items: center; opacity: 0.6; }
 
 .brand-name {
   display: inline-flex;

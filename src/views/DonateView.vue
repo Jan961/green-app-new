@@ -7,14 +7,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <v-container class="py-10">
+    <v-container class="placeholder-container">
     <v-row>
       <v-col cols="12" md="8">
-        <h1 class="text-h4 mb-4">Donate</h1>
-        <p>Your support helps us do more. Thank you.</p>
+          <h1 class="text-h4 mb-4">Donate</h1>
+          <p>Coming soon!</p>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-
+<style scoped>
+.placeholder-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+</style>

@@ -23,9 +23,8 @@
 <script setup lang="ts">
 import bgGradient from '@/assets/images/background/bg-gradient.png'
 
-const whatsAppNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '66666666666'
 const defaultMessage = 'Hello Green Garden, I would like to contribute.'
-const whatsAppUrl = `https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(defaultMessage)}`
+const whatsAppUrl = `https://wa.me/66666666666?text=${encodeURIComponent(defaultMessage)}`
 
 const ctaStyle = {
   backgroundImage: 
